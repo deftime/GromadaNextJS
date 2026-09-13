@@ -1,0 +1,30 @@
+@use '../variables' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: vw(0) vw(80);
+  background-color: $brandYellow;
+  height: vw(85);
+}
+
+.logo {
+  width: vw(72);
+  height: auto;
+}
+
+nav.nav {
+  display: flex;
+  gap: vw(24);
+  a {
+    font-size: vw(13);
+    line-height: vw(18);
+    font-weight: 500;
+    color: $brandBlue;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
