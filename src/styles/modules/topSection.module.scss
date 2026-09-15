@@ -71,3 +71,48 @@
   color: #E5E7EB;
   text-align: center;
 }
+
+
+@media screen and (max-width: $mobile-width) {
+
+  .topSection {
+    height: auto;
+    min-height: vw(700);
+    padding: vw(50) vw(20);
+  }
+
+  .topName {
+    padding-left: vw(25);
+    margin-bottom: vw(100);
+    span:first-child {
+      font-size: vw(12);
+      line-height: vw(15);
+      letter-spacing: 14%;
+    }
+    span:last-child {
+      font-size: vw(30);
+      line-height: vw(35);
+    }
+    &:before {
+      width: vw(4);
+      height: 100%;
+    }
+  }
+
+  .title {
+    font-size: vw(45);
+    line-height: vw(55);
+    br {
+      display: none;
+    }
+  }
+
+  .desc {
+    font-size: vw(16);
+    line-height: vw(25);
+    br {
+      display: none;
+    }
+  }
+
+}

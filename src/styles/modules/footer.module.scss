@@ -1,0 +1,142 @@
+@use '../variables' as *;
+
+footer.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: vw(50);
+  min-height: vw(380);
+  padding: vw(80) vw(80) vw(40) vw(80);
+  background-color: $brandBiege;
+}
+
+.top, .bot {
+  display: flex;
+  gap: vw(60);
+}
+
+.bot {
+  font-size: vw(12);
+  line-height: vw(16);
+  font-weight: 400;
+  color: #5B5B5B;
+}
+
+.fDesc {
+  margin-right: auto;
+  .logoName {
+    display: flex;
+    align-items: center;
+    gap: vw(10);
+    img {
+      flex-shrink: 0;
+      width: vw(60);
+      height: auto;
+    }
+    span {
+      display: block;
+      &:first-child {
+        font-size: vw(12);
+        line-height: vw(15);
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $brandYellow;
+        letter-spacing: 14%;
+        padding-left: vw(5);
+      }
+      &:last-child {
+        font-family: 'Spectral', sans-serif;
+        font-size: vw(35);
+        line-height: vw(40);
+        font-style: italic;
+        font-weight: 600;
+        color: $brandBlue;
+      }
+    }
+  }
+  .desc {
+    font-size: vw(14);
+    line-height: vw(22);
+    font-weight: 400;
+    color: #5B5B5B;
+    margin-top: vw(15);
+  }
+}
+
+.fContact {
+  .name {
+    font-size: vw(14);
+    line-height: vw(19);
+    font-weight: 700;
+    color: $brandGreen;
+    text-transform: uppercase;
+    margin-bottom: vw(12);
+  }
+  .data {
+    font-size: vw(14);
+    line-height: vw(27);
+    font-weight: 400;
+    color: #241102;
+  }
+}
+
+.copyrights {
+  margin-right: auto;
+}
+
+.links {
+  display: flex;
+  gap: vw(25);
+  a {
+    color: #5B5B5B;
+  }
+}
+
+@media screen and (max-width: $mobile-width) {
+
+  footer.footer {
+    display: block;
+    min-height: unset;
+    padding: vw(40) vw(20);
+  }
+
+  .top, .bot {
+    display: block;
+  }
+
+  .bot {
+    margin-top: vw(30);
+  }
+
+  .fDesc {
+    margin: 0 0 vw(30) 0;
+    .logoName {
+      span {
+        &:first-child {
+          font-size: vw(10);
+          line-height: vw(12);
+        }
+        &:last-child {
+          font-size: vw(25);
+          line-height: vw(30);
+        }
+      }
+    }
+    .desc {
+      margin-top: vw(10);
+    }
+  }
+
+  .fContact {
+    margin-bottom: vw(20);
+    .data {
+      line-height: vw(20);
+    }
+  }
+
+  .copyrights {
+    margin: 0 0 vw(5) 0;
+  }
+
+}
+

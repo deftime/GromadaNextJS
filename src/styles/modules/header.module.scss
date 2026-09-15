@@ -1,6 +1,6 @@
 @use '../variables' as *;
 
-.header {
+header.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,5 +26,24 @@ nav.nav {
       color: #fff;
     }
   }
+}
+
+
+@media screen and (max-width: $mobile-width) {
+
+  header.header {
+    padding: vw(0) vw(20);
+    height: vw(60);
+  }
+
+  .logo {
+    width: vw(50);
+    height: auto;
+  }
+
+  nav.nav {
+    display: none;
+  }
+
 }
 

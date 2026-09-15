@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import cls from '@/styles/modules/header.module.scss'
 import logo from '@/assets/logo.svg';
 
@@ -7,11 +8,11 @@ export function Header() {
     <header className={cls.header}>
       <Image src={logo} alt="main logo" width={60} height={60} className={cls.logo}/>
       <nav className={cls.nav}>
-        <a href="#">Про нас</a>
-        <a href="#">Послуги</a>
-        <a href="#">Команда</a>
-        <a href="#">Відгуки</a>
-        <a href="#">Контакти</a>
+        <Link href="#">Про нас</Link>
+        <Link href="#">Послуги</Link>
+        <Link href="#">Команда</Link>
+        <Link href="#">Відгуки</Link>
+        <Link href="#">Контакти</Link>
       </nav>
     </header>
   )

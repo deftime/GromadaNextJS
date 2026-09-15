@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import '@/styles/app.scss';
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
