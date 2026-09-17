@@ -1,49 +1,13 @@
 @use '../variables' as *;
 
 header.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: vw(0) vw(80);
-  background-color: $brandYellow;
-  height: vw(85);
-}
 
-.logo {
-  width: vw(72);
-  height: auto;
-}
-
-nav.nav {
-  display: flex;
-  gap: vw(24);
-  a {
-    font-size: vw(13);
-    line-height: vw(18);
-    font-weight: 500;
-    color: $brandBlue;
-    &:hover {
-      color: #fff;
-    }
-  }
 }
 
 
 @media screen and (max-width: $mobile-width) {
 
-  header.header {
-    padding: vw(0) vw(20);
-    height: vw(60);
-  }
 
-  .logo {
-    width: vw(50);
-    height: auto;
-  }
-
-  nav.nav {
-    display: none;
-  }
 
 }
 

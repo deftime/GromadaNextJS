@@ -31,56 +31,64 @@
 }
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Regular.ttf') format('TrueType');
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Regular.ttf') format('TrueType');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Medium.ttf') format('TrueType');
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Medium.ttf') format('TrueType');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Bold.ttf') format('TrueType');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Spectral';
-  src: url('/fonts/Spectral-Regular.ttf') format('TrueType');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Spectral';
-  src: url('/fonts/Spectral-Medium.ttf') format('TrueType');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Spectral';
-  src: url('/fonts/Spectral-SemiBold.ttf') format('TrueType');
+  font-family: 'Inter';
+  src: url('/fonts/Inter-SemiBold.ttf') format('TrueType');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Spectral';
-  src: url('/fonts/Spectral-Bold.ttf') format('TrueType');
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Bold.ttf') format('TrueType');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PlayfairDisplay';
+  src: url('/fonts/PlayfairDisplay-Regular.ttf') format('TrueType');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PlayfairDisplay';
+  src: url('/fonts/PlayfairDisplay-Medium.ttf') format('TrueType');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PlayfairDisplay';
+  src: url('/fonts/PlayfairDisplay-SemiBold.ttf') format('TrueType');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PlayfairDisplay';
+  src: url('/fonts/PlayfairDisplay-Bold.ttf') format('TrueType');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

@@ -2,117 +2,15 @@
 @use '../templates' as *;
 
 .topSection {
-  position: relative;
-  height: vw(715);
-  background-color: $brandBlue;
-  padding: vw(35) vw(80);
-  a {
-    @extend %flowUp;
-    margin: vw(30) auto 0 auto;
-  }
+
 }
 
-.bg {
+img.bg {
   @extend %absoluteBg;
-}
-
-.topName {
-  position: relative;
-  padding-left: vw(20);
-  margin-bottom: vw(175);
-  span {
-    display: block;
-  }
-  span:first-child {
-    font-size: vw(15);
-    line-height: vw(20);
-    font-weight: 500;
-    color: $brandYellow;
-    letter-spacing: 14%;
-    margin-bottom: vw(5);
-  }
-  span:last-child {
-    font-family: 'Spectral', sans-serif;
-    font-size: vw(40);
-    line-height: vw(44);
-    font-weight: 600;
-    font-style: italic;
-    color: #fff;
-  }
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto 0;
-    width: vw(3);
-    height: 80%;
-    background-color: $brandYellow;
-  }
-}
-
-.title {
-  @extend %flowUp;
-  font-family: 'Spectral', sans-serif;
-  font-size: vw(64);
-  line-height: vw(70);
-  font-weight: 500;
-  text-align: center;
-  color: #fff;
-  margin-bottom: vw(30);
-}
-
-.desc {
-  @extend %flowUp;
-  font-size: vw(18);
-  line-height: vw(30);
-  font-weight: 400;
-  color: #E5E7EB;
-  text-align: center;
 }
 
 
 @media screen and (max-width: $mobile-width) {
 
-  .topSection {
-    height: auto;
-    min-height: vw(700);
-    padding: vw(50) vw(20);
-  }
-
-  .topName {
-    padding-left: vw(25);
-    margin-bottom: vw(100);
-    span:first-child {
-      font-size: vw(12);
-      line-height: vw(15);
-      letter-spacing: 14%;
-    }
-    span:last-child {
-      font-size: vw(30);
-      line-height: vw(35);
-    }
-    &:before {
-      width: vw(4);
-      height: 100%;
-    }
-  }
-
-  .title {
-    font-size: vw(45);
-    line-height: vw(55);
-    br {
-      display: none;
-    }
-  }
-
-  .desc {
-    font-size: vw(16);
-    line-height: vw(25);
-    br {
-      display: none;
-    }
-  }
 
 }

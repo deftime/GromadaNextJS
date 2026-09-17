@@ -1,6 +1,4 @@
 import { Metadata } from "next";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import '@/styles/global.css';
 import '@/styles/app.scss';
 
@@ -13,9 +11,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ua">
       <body>
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );
