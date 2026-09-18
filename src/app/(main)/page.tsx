@@ -1,4 +1,4 @@
-import { TopSection } from "@/components/TopSection";
+import { TopSection } from "@/sections/TopSection";
 
 export default function Home() {
   return (

@@ -1,13 +1,17 @@
 @use '../variables' as *;
 
-header.header {
-
+.logoText {
+  span:last-child {
+    font-family: 'PlayfairDisplay', sans-serif;
+  }
 }
 
 
-@media screen and (max-width: $mobile-width) {
+@media screen and (max-width: 1100px) {
 
-
+  nav.nav {
+    display: none;
+  }
 
 }
 

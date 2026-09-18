@@ -1,7 +1,12 @@
 @use '../variables' as *;
 
-footer.footer {
-
+.logoText {
+  span:last-child {
+    font-family: 'PlayfairDisplay', sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    color: $brandYellow;
+  }
 }
 
 @media screen and (max-width: $mobile-width) {

@@ -1,16 +1,46 @@
 @use '../variables' as *;
 @use '../templates' as *;
 
-.topSection {
-
+h2.asH1 {
+  font-family: "PLayfairDisplay", sans-serif;
+  font-size: 70px;
+  line-height: 90px;
+  font-weight: 700;
+  color: #fff;
+  em {
+    display: block;
+    color: $brandYellow;
+    font-style: italic;
+  }
 }
 
 img.bg {
   @extend %absoluteBg;
+  object-fit: cover;
+}
+
+.linBg {
+  @extend %absoluteBg;
+  background: linear-gradient(160deg, rgba(36,17,2,0.88) 0%, rgba(81,87,163,0.55) 60%, rgba(35,86,30,0.35) 100%);
+  z-index: 0;
+}
+
+.linBg2 {
+  @extend %absoluteBg;
+  top: unset;
+  bottom: 0;
+  height: 8rem;
+  background: linear-gradient(to top, rgba(36,17,2,0.5), transparent);
+  z-index: 0;
 }
 
 
 @media screen and (max-width: $mobile-width) {
 
+
+  h2.asH1 {
+    font-size: 40px;
+    line-height: 45px;
+  }
 
 }

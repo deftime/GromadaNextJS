@@ -1,12 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
-import cls from '@/styles/modules/header.module.scss'
+import clsx from "clsx";
 import logo from '@/assets/logo.svg';
+import cls from '@/styles/modules/header.module.scss'
 
 export function Header() {
   return (
-    <header className="absolute w-full z-10 flex items-center justify-between px-8 md:px-16 pt-8 pb-6">
-
+    <header className="absolute w-full z-100 flex items-center justify-between px-8 md:px-16 pt-8 pb-6">
       <div className="flex items-center gap-4">
         <Image
           src={logo}
@@ -15,72 +14,32 @@ export function Header() {
           width={48}
           height={48}
         />
-        <div>
-          <p
-            className="text-xs tracking-[0.2em] uppercase mb-1"
-            style={{ color: 'rgba(255,255,255,0.6)' }}
-          >
+        <div className={cls.logoText}>
+          <span className="block text-xs text-white/60 tracking-[0.2em] uppercase mb-1">
             Адвокатське об'єднання
-          </p>
-          <p
-            className="font-bold leading-tight"
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: '1.15rem',
-              color: '#FFBF37',
-              letterSpacing: '0.01em',
-            }}
-          >
+          </span>
+          <span className="block font-bold text-2xl text-[#FFBF37] leading-tight tracking-wider">
             Громада і Закон
-          </p>
+          </span>
         </div>
       </div>
-
-      <nav className="hidden md:flex items-center gap-8" aria-label="Основна навігація">
-        <a
-          href="#"
-          className="text-sm tracking-wider transition-colors duration-200 hover:text-[#FFBF37]"
-          style={{ color: 'rgba(255,255,255,0.82)', letterSpacing: '0.06em' }}
-        >
+      <nav className={clsx(cls.nav, "hidden md:flex items-center gap-8")} aria-label="Основна навігація">
+        <a href="#" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Про нас
         </a>
-        <a
-          href="#"
-          className="text-sm tracking-wider transition-colors duration-200 hover:text-[#FFBF37]"
-          style={{ color: 'rgba(255,255,255,0.82)', letterSpacing: '0.06em' }}
-        >
+        <a href="#" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Команда
         </a>
-        <a
-          href="#"
-          className="text-sm tracking-wider transition-colors duration-200 hover:text-[#FFBF37]"
-          style={{ color: 'rgba(255,255,255,0.82)', letterSpacing: '0.06em' }}
-        >
+        <a href="#" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Послуги
         </a>
-        <a
-          href="#"
-          className="text-sm tracking-wider transition-colors duration-200 hover:text-[#FFBF37]"
-          style={{ color: 'rgba(255,255,255,0.82)', letterSpacing: '0.06em' }}
-        >
+        <a href="#" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Офіси
         </a>
-        <a
-          href="#"
-          className="text-sm tracking-wider transition-colors duration-200 hover:text-[#FFBF37]"
-          style={{ color: 'rgba(255,255,255,0.82)', letterSpacing: '0.06em' }}
-        >
+        <a href="#" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Контакти
         </a>
-        <a
-          href="#"
-          className="text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-200 hover:opacity-90"
-          style={{
-            background: '#FFBF37',
-            color: '#241102',
-            letterSpacing: '0.12em',
-          }}
-        >
+        <a href="#" className="text-xs text-[#241102] font-semibold bg-[#FFBF37] tracking-widest uppercase px-5 py-2.5 transition-all duration-200 hover:bg-[#5157A3] hover:text-white">
           Консультація
         </a>
       </nav>
