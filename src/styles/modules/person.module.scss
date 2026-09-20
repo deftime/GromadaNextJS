@@ -1,0 +1,10 @@
+@use '../variables' as *;
+
+.name {
+  font-family: 'PlayfairDisplay', sans-serif;
+  font-size: 25px;
+  line-height: 30px;
+  font-weight: 600;
+  color: $brandBlack;
+  margin-bottom: 5px;
+}

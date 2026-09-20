@@ -38,6 +38,10 @@ img.bg {
 @media screen and (max-width: $mobile-width) {
 
 
+  h1.asH1 {
+    display: none;
+  }
+
   h2.asH1 {
     font-size: 40px;
     line-height: 45px;

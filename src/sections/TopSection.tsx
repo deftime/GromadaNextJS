@@ -1,6 +1,7 @@
 import Image from "next/image";
 import topBg from '@/assets/main-bg.jpg';
 import cls from '@/styles/modules/topSection.module.scss';
+import clsx from "clsx";
 
 export function TopSection() {
   return (
@@ -9,9 +10,9 @@ export function TopSection() {
 
       <div className={cls.linBg} />
 
-      <div className="relative z-10 text-center px-8 pb-20 pt-20">
+      <div className="relative z-10 text-center px-8 pb-20 pt-50">
         <div className="max-w-4xl w-full mx-auto">
-          <h1 className="text-4xl text-white mb-12">Адвокатське об'єднання <span className="text-[#FFBF37]">"Громада і Закон"</span></h1>
+          <h1 className={clsx(cls.asH1, "text-4xl text-white mb-12")}>Адвокатське об'єднання <span className="text-[#FFBF37]">"Громада і Закон"</span></h1>
           <div className="mx-auto mb-8 w-18 h-0.5 bg-[#FFBF37]" />
           <h2 className={cls.asH1} >
             Захист ваших прав —

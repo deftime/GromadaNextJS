@@ -1,0 +1,9 @@
+@use '../variables' as *;
+
+.num {
+  font-family: 'PlayfairDisplay', sans-serif;
+  font-size: 45px;
+  line-height: 50px;
+  font-weight: 700;
+  color: $brandBlue;
+}
