@@ -2,6 +2,7 @@ import { TopSection } from "@/sections/TopSection";
 import { AboutSection } from "@/sections/AboutSectiom";
 import { TeamSection } from "@/sections/TeamSection";
 import { ServicesSection } from "@/sections/ServicesSection";
+import { OfficesSection } from "@/sections/OfficesSection";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <AboutSection />
       <TeamSection />
       <ServicesSection />
+      <OfficesSection />
     </>
   );
 }

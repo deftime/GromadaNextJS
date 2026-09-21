@@ -3,7 +3,7 @@ import '@/styles/global.css';
 import '@/styles/app.scss';
 
 export const metadata: Metadata = {
-  title: "Gromada i Zakon",
+  title: "АО 'Громада і Закон'",
   description: "Association of attorneys",
 };
 
