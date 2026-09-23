@@ -1,11 +1,5 @@
 @use 'variables' as *;
 
-//* {
-//  margin: 0;
-//  padding: 0;
-//  box-sizing: border-box;
-//}
-
 html, body {
   scroll-behavior: smooth;
 }
@@ -29,4 +23,37 @@ a {
 
 img {
   display: block;
+}
+
+input, textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  color: $brandBlack;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(81,87,163,0.22);
+  border-radius: 8px;
+  background-color: #fff;
+  outline: none;
+  transition: 0.3s ease;
+  &:focus {
+    border-color: $brandBlue;
+    &::placeholder {
+      color: transparent;
+    }
+  }
+}
+
+textarea {
+  resize: none;
+  min-height: 130px;
+}
+
+button {
+  &.load {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+  }
 }

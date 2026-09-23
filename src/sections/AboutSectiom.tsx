@@ -3,7 +3,7 @@ import { BigNumber } from "@/components/BigNumber";
 
 export function AboutSection() {
   return (
-    <section className="py-15 px-8 md:py-36 md:px-16 bg-[#FAFAF8]" aria-label="Про нас">
+    <section id="about" className="py-15 px-8 md:py-36 md:px-16 bg-[#FAFAF8]" aria-label="Про нас">
       <div className="max-w-4xl mx-auto text-center">
 
         <Title sup={"Адвокатське об'єднання"} title={"Про нас"} />

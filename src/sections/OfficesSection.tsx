@@ -39,12 +39,11 @@ const OFFICES = [
 
 export function OfficesSection() {
   return (
-    <section className="py-24 px-8 bg-white md:px-16 md:py-36" aria-label="Наші офіси">
+    <section id="offices" className="py-24 px-8 bg-white md:px-16 md:py-36" aria-label="Наші офіси">
       <div className="max-w-5xl mx-auto">
 
         <Title sup={'Представництво'} title={'Наші офіси в Україні'} />
 
-        {/* Office list */}
         <div className="flex flex-col gap-8">
           {OFFICES.map(
             (office) => (

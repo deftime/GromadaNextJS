@@ -42,7 +42,7 @@ const TEAM = [
 
 export function TeamSection() {
   return (
-    <section className="py-24 md:py-30 px-8 md:px-16 bg-white" aria-label="Наша команда">
+    <section id="team" className="py-24 md:py-30 px-8 md:px-16 bg-white" aria-label="Наша команда">
       <div className="max-w-6xl mx-auto">
 
         <Title sup={'Команда фахівців'} title={'Наша команда'} />

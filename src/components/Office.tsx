@@ -1,5 +1,4 @@
 import Image from "next/image";
-import clsx from "clsx";
 import pointIcon from '@/assets/point.svg';
 import mailIcon from '@/assets/mail3.svg';
 import phoneIcon from '@/assets/phone.svg';

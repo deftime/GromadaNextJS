@@ -24,19 +24,19 @@ export function Header() {
         </div>
       </div>
       <nav className={clsx(cls.nav, "hidden md:flex items-center gap-8")} aria-label="Основна навігація">
-        <a href="#" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
+        <a href="#about" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Про нас
         </a>
-        <a href="#" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
+        <a href="#team" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Команда
         </a>
-        <a href="#" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
+        <a href="#services" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Послуги
         </a>
-        <a href="#" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
+        <a href="#offices" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Офіси
         </a>
-        <a href="#" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
+        <a href="#contacts" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Контакти
         </a>
         <a href="#" className="text-xs text-[#241102] font-semibold bg-[#FFBF37] tracking-widest uppercase px-5 py-2.5 transition-all duration-200 hover:bg-[#5157A3] hover:text-white">

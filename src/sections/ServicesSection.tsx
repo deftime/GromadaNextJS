@@ -36,7 +36,7 @@ const SERVICES = [
 
 export function ServicesSection() {
   return (
-    <section className="py-24 px-8 bg-[#FAFAF8] md:py-36 md:px-16" aria-label="Наші послуги">
+    <section id="services" className="py-24 px-8 bg-[#FAFAF8] md:py-36 md:px-16" aria-label="Наші послуги">
       <div className="max-w-5xl mx-auto">
 
         <Title sup={'Правова допомога'} title={'Наші послуги'} />
