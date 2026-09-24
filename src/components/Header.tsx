@@ -39,8 +39,8 @@ export function Header() {
         <a href="#contacts" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Контакти
         </a>
-        <a href="#" className="text-xs text-[#241102] font-semibold bg-[#FFBF37] tracking-widest uppercase px-5 py-2.5 transition-all duration-200 hover:bg-[#5157A3] hover:text-white">
-          Консультація
+        <a href="https://qu.weareukrainians.com" target="_blank" className="text-xs text-[#241102] font-semibold bg-[#FFBF37] tracking-widest uppercase px-5 py-2.5 transition-all duration-200 hover:bg-[#5157A3] hover:text-white">
+          Онлайн-консультація
         </a>
       </nav>
     </header>

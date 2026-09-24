@@ -36,8 +36,8 @@ export function ContactForm({ title, desc }: FormProps) {
   }
 
   return (
-    <div className="p-8 border border-solid border-[rgba(81,87,163,0.16)] rounded-[14px] bg-white md:p-10 md:w-120 md:shrink-0">
-      {title && <div className="mb-2 text-[1.5rem] font-bold text-[#241102]" style={{ fontFamily: "'PlayfairDisplay', sans-serif", }}>
+    <div className="p-7 border border-solid border-[rgba(81,87,163,0.16)] rounded-[14px] bg-white md:p-10 md:w-120 md:shrink-0">
+      {title && <div className="mb-4 text-[1.5rem] font-bold text-[#241102] leading-6" style={{ fontFamily: "'PlayfairDisplay', sans-serif", }}>
         {title}
       </div>}
       {desc && <div className="text-sm text-[#3D3229] opacity-65 mb-8">

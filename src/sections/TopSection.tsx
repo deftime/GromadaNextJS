@@ -27,9 +27,9 @@ export function TopSection() {
             етапі судового провадження.
           </div>
 
-          <button className="inline-flex items-center bg-[#FFBF37] text-[#241102] gap-3 px-10 py-4 text-sm font-semibold uppercase tracking-widest transition-all duration-200 hover:brightness-110 active:scale-95">
+          <a href="#contacts" className="inline-flex items-center bg-[#FFBF37] text-[#241102] gap-3 px-10 py-4 text-sm font-semibold uppercase tracking-widest transition-all duration-200 hover:brightness-110 active:scale-95">
             Замовити консультацію
-          </button>
+          </a>
         </div>
       </div>
 
