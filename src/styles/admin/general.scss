@@ -1,0 +1,31 @@
+@use '../variables' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.admin-layout {
+  padding: 0;
+}
+
+.admin-top {
+  display: flex;
+  gap: vw(20);
+  height: vw(40);
+  background-color: rgb(81 87 163 / 0.3);
+}
+
+.admin-base {
+  display: flex;
+  .sidebar {
+    flex-shrink: 0;
+    width: vw(200);
+    border-right: 1px solid #000;
+    height: 100vh;
+  }
+  .page-zone {
+    flex-grow: 1;
+  }
+}
