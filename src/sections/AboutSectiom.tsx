@@ -26,10 +26,10 @@ export function AboutSection() {
       </div>
 
       <div className="max-w-4xl mx-auto mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-        <BigNumber value={'2018'} label={'Рік заснування'} />
-        <BigNumber value={'500+'} label={'Виграних справ'} />
-        <BigNumber value={'15+'} label={'Років досвіду'} />
-        <BigNumber value={'12'} label={'Адвокатів у команді'} />
+        <BigNumber value={'2021'} label={'Рік заснування'} />
+        <BigNumber value={'100+'} label={'Виграних справ'} />
+        <BigNumber value={'5+'} label={'Років досвіду'} />
+        <BigNumber value={'20'} label={'Адвокатів у команді'} />
       </div>
     </section>
   )

@@ -14,9 +14,7 @@ export function BigNumber({ value, label }: BigNumberProps) {
       <div className="mt-2 text-xs text-[#241102] opacity-50 tracking-widest uppercase">
         {label}
       </div>
-      <div className="mx-auto mt-3 bg-[#FFBF37]"
-        style={{ width: 24, height: 1 }}
-      />
+      <div className="mx-auto mt-3 bg-[#FFBF37] w-8 h-px" />
     </div>
   )
 }

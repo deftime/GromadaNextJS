@@ -12,10 +12,10 @@ type FormProps = {
 type FormDataType = yup.InferType<typeof schema>
 
 const schema = yup.object({
-  name: yup.string().required('Enter your name!').min(3, 'Minimum 3 chars!'),
+  name: yup.string().required('Введіть ваше ім\'я').min(3, 'Мінімум 3 літери!'),
   phone: yup.string().matches(/^[0-9+\-() ]*$/, 'Тільки цифри та символи телефону'),
-  email: yup.string().required('Enter your email!').email('Enter correct email!'),
-  message: yup.string().required('Enter your question!').min(20, 'Minimum 20 chars!').matches(/^[^a-z]*$/i, 'No Latin letters or links!'),
+  email: yup.string().required('Введіть ваш Email').email('Дотримуйтесь формату email!'),
+  message: yup.string().required('Введіть ваше повідомлення').min(20, 'Мінімум 20 символів!').matches(/^[^a-z]*$/i, 'Латинські літери та посилання не допустимі!'),
 })
 
 export function ContactForm({ title, desc }: FormProps) {
