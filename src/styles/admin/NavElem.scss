@@ -1,0 +1,26 @@
+@use '../variables' as *;
+
+.admin-link {
+  display: flex;
+  align-items: center;
+  gap: vw(5);
+  padding: vw(12) vw(17);
+  img {
+    width: vw(20);
+    height: auto;
+    opacity: 0.5;
+  }
+  span {
+    font-size: vw(12);
+    line-height: vw(16);
+    font-weight: 500;
+    color: #000;
+    opacity: 0.5;
+  }
+  &.active {
+    background-color: #e5e5e5;
+    img, span {
+      opacity: 1;
+    }
+  }
+}

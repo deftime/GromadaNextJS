@@ -1,5 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
+
+import { NavElem } from "@/components/admin/NavElem";
+
 import homeLogo from '@/assets/home.svg';
 import formLogo from '@/assets/form.svg';
 import panelLogo from '@/assets/dashboard.svg';
@@ -14,6 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode}) {
   return (
     <section className="admin-layout">
       <div className="admin-top">
+        <div className="title">FirebaseMyAdmin</div>
         <Link href="/" className="site-link" target='_blank'>
           <img src={homeLogo.src} alt="Home logo" />
           <span>To site</span>
@@ -21,19 +25,8 @@ export default function Layout({ children }: { children: React.ReactNode}) {
       </div>
       <div className="admin-base">
         <div className="sidebar">
-
-          {/* Component? */}
-          <Link href="/admin" className="admin-link">
-            <img src={panelLogo.src} alt="Admin page icon" />
-            <span>Panel</span>
-          </Link>
-
-          {/* Component? */}
-          <Link href="/admin/feedback-form" className="admin-link">
-            <img src={formLogo.src} alt="Admin page icon" />
-            <span>Feedback form</span>
-          </Link>
-
+          <NavElem title="Panel" href="/admin" icon={panelLogo.src} />
+          <NavElem title="Feedback Form" href="/admin/feedback-form" icon={formLogo.src} />
         </div>
         <div className="page-zone">
           {children}

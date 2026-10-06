@@ -1,0 +1,78 @@
+@use '../variables' as *;
+
+.edit-block {
+  span, label {
+    display: block;
+    font-size: vw(10);
+    line-height: vw(14);
+    font-weight: 500;
+    margin-bottom: vw(3);
+  }
+  .data {
+    font-size: vw(15);
+    line-height: vw(18);
+    color: grey;
+  }
+  input, textarea {
+    border-color: #000;
+  }
+  button {
+    display: block;
+    font-size: vw(12);
+    line-height: vw(16);
+    text-align: center;
+    border: none;
+    border-radius: vw(5);
+    padding: vw(7) vw(15);
+    background-color: $brandGreen;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  &:nth-child(n+2) {
+    margin-top: vw(20);
+  }
+  &.btns {
+    display: flex;
+    gap: vw(10);
+  }
+}
+
+.param-block {
+  span {
+    font-size: vw(10);
+    line-height: vw(14);
+    color: #000;
+    &:last-child {
+      color: grey;
+    }
+  }
+}
+
+.edit-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: vw(30) vw(70);
+  .edit-block {
+    margin: 0;
+  }
+}
+
+.edit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: vw(30) vw(70);
+  .edit-block {
+    margin: 0;
+  }
+}
+
+.params-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: vw(30) vw(40);
+  padding: vw(10);
+  background-color: #e5e5e5;
+}
