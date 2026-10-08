@@ -1,15 +1,52 @@
 'use client'
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState } from "react";
+import clsx from "clsx";
+
+import { FeedbackType } from "@/types/firebase-data";
+import { ref, set } from "firebase/database";
+import { db } from "@/api/firebase-client";
 
 type FormProps = {
   title?: string,
   desc?: string,
 }
+
 type FormDataType = yup.InferType<typeof schema>
+
+// Конструктор-класс, который создает объект Фидбека
+class FeObject implements FeedbackType {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+  answered: string = '';
+  readonly date: string = this.getFormattedDate();
+  readonly id: string = this.genId();
+
+  constructor(name: string, phone: string = '', email: string, text: string) {
+    this.name = name;
+    this.phone = phone;
+    this.email = email;
+    this.message = text;
+  }
+
+  private getFormattedDate() {
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    return `${day}.${month}.${year}`;
+  }
+
+  private genId() {
+    return `${Math.floor(Math.random() * 100000)}`;
+  }
+
+}
 
 const schema = yup.object({
   name: yup.string().required('Enter your name!').min(3, 'Minimum 3 chars!'),
@@ -20,7 +57,7 @@ const schema = yup.object({
 
 export function ContactForm({ title, desc }: FormProps) {
   const [sent, setSent] = useState<'ok' | 'error' | false>(false);
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormDataType>({
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormDataType>({
     defaultValues: {
       name: '',
       phone: '',
@@ -32,7 +69,14 @@ export function ContactForm({ title, desc }: FormProps) {
 
   const onSend = async (data: FormDataType) => {
     console.log(data);
-    setSent('error');
+    const fe = new FeObject(data.name, data.phone, data.email, data.message);
+    try {
+      await set(ref(db, 'Feedbacks/Fe-' + fe.id), fe);
+      setSent('ok');
+      reset();
+    } catch {
+      setSent('error');
+    }
   }
 
   return (
@@ -87,10 +131,10 @@ export function ContactForm({ title, desc }: FormProps) {
             </label>
             <textarea rows={5} placeholder="Опишіть вашу ситуацію або запитання..." {...register('message')} />
             {errors.message && <span className="block text-[12px] leading-4 text-red-700 mt-0.5">{errors.message?.message}</span>}
-            {sent === 'error' && <span className="block text-[12px] leading-4 text-red-700 mt-0.5">Форма ще не працює. Очікуйте запуску!</span>}
+            {sent === 'error' && <span className="block text-[12px] leading-4 text-red-700 mt-0.5">Помилка відправки. Спробуйте пізніше...</span>}
           </div>
 
-          <button type="submit" className="mt-1 w-full py-3.5 text-sm text-[#241102] bg-[#FFBF37] rounded-lg font-semibold uppercase tracking-widest transition-all duration-200 hover:brightness-110 active:scale-95 cursor-pointer">
+          <button type="submit" className={clsx(isSubmitting && "load", "mt-1 w-full py-3.5 text-sm text-[#241102] bg-[#FFBF37] rounded-lg font-semibold uppercase tracking-widest transition-all duration-200 hover:brightness-110 active:scale-95 cursor-pointer")}>
             Надіслати заявку
           </button>
 

@@ -53,6 +53,7 @@ textarea {
 button {
   &.load {
     opacity: 0.5;
+    background-color: grey;
     pointer-events: none;
     cursor: default;
   }
