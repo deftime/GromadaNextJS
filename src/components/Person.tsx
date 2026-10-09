@@ -18,9 +18,9 @@ export function Person({ name, bio, photo, role }: PersonProps) {
         <Image
           src={photo}
           alt={name}
-          width={355}
+          width={360}
           height={285}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-500"
           style={{ objectPosition: "top" }}
         />
       </div>
