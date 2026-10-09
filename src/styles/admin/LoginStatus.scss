@@ -1,0 +1,29 @@
+@use '../variables' as *;
+
+.login-status {
+  display: flex;
+  align-items: center;
+  gap: vw(10);
+  margin-left: auto;
+  .user {
+    font-size: vw(12);
+    line-height: vw(16);
+    font-weight: 500;
+  }
+  button {
+    font-size: vw(10);
+    line-height: vw(12);
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    padding: vw(7) vw(12);
+    border-radius: vw(5);
+    cursor: pointer;
+  }
+  .btn-out {
+    background-color: #ff7937;
+  }
+  .btn-in {
+    background-color: $brandGreen;
+  }
+}
