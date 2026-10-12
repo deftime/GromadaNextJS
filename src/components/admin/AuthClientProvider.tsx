@@ -4,6 +4,11 @@ import { type ReactNode, createContext, useEffect, useState } from 'react';
 import { type User, onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/api/firebase-client";
 
+// Особый клиентский компонент-обложка, в котором мы создаем контекст, проводим авторизацию на клиенте,
+// и отправляем статус авторизации в контекст.
+// Далее все клиентские компоненты будут иметь доступ к статусу авторизации.
+// (Даже сквозь серверные)
+
 type AuthProps = {
   children: ReactNode;
 };
