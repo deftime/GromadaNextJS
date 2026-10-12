@@ -17,14 +17,14 @@ type Contact = {
 const GENERAL_CONTACTS: Contact[] = [
   {
     label: "Головний телефон",
-    value: "+38 (044) 123-45-67",
-    href: "tel:+380441234567",
+    value: "+38 (097) 925-73-34",
+    href: "tel:+380979257334",
     icon: 'phone',
   },
   {
     label: "Електронна пошта",
-    value: "info@gromada-zakon.ua",
-    href: "mailto:info@gromada-zakon.ua",
+    value: "gromada.zackon@gmail.com",
+    href: "mailto:gromada.zackon@gmail.com",
     icon: 'mail3',
   },
   {
@@ -63,16 +63,16 @@ export function ContactsSection() {
               Соціальні мережі та месенджери
             </div>
             <div className="flex justify-center md:justify-normal gap-10">
-              <a href="https://facebook.com" target="_blank" className="block w-10 h-10 hover:-translate-y-1 hover:opacity-80 transition-all duration-200">
+              <a href="https://www.facebook.com/gromadaizakon" target="_blank" className="block w-10 h-10 hover:-translate-y-1 hover:opacity-80 transition-all duration-200">
                 <Image src={fbIcon} alt="facebook" width={40} height={40} />
               </a>
-              <a href="https://viber.com" target="_blank" className="block w-10 h-10 hover:-translate-y-1 hover:opacity-80 transition-all duration-200">
+              <a href="viber://chat?number=+380979257334" target="_blank" className="block w-10 h-10 hover:-translate-y-1 hover:opacity-80 transition-all duration-200">
                 <Image src={viberIcon} alt="viber" width={40} height={40} />
               </a>
-              <a href="https://whatsapp.com" target="_blank" className="block w-10 h-10 hover:-translate-y-1 hover:opacity-80 transition-all duration-200">
+              <a href="https://wa.me/380979257334" target="_blank" className="block w-10 h-10 hover:-translate-y-1 hover:opacity-80 transition-all duration-200">
                 <Image src={whatsappIcon} alt="whatsapp" width={40} height={40} />
               </a>
-              <a href="https://telegram.com" target="_blank" className="block w-10 h-10 hover:-translate-y-1 hover:opacity-80 transition-all duration-200">
+              <a href="https://t.me/+380979257334" target="_blank" className="block w-10 h-10 hover:-translate-y-1 hover:opacity-80 transition-all duration-200">
                 <Image src={tgIcon} alt="telegram" width={40} height={40} />
               </a>
             </div>
