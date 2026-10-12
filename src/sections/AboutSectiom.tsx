@@ -18,13 +18,14 @@ export function AboutSection() {
           <p className="mb-5">Головний офіс розташований у місті Києві. Створена філія у західному регіоні у місті Івано-Франківськ. Ми маємо представників у всіх областях України та проводимо роботу по створенню відділень та представництв по всій території України.</p>
           <p className="mb-5">Наша команда - це адвокати з великим досвідом правозахисної діяльності, експерти в певній галузі права, які постійно вдосконалюють свої професійні навички.</p>
         </div>
+        <div className="text-[16px] text-[#3D3229] opacity-85 leading-relaxed mb-8 md:text-xl">МИ ЗАВЖДИ ПОРЯД З ВАМИ</div>
       </div>
 
       <div className="max-w-4xl mx-auto mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
         <BigNumber value={'2021'} label={'Рік заснування'} />
         <BigNumber value={'100+'} label={'Виграних справ'} />
         <BigNumber value={'5+'} label={'Років досвіду'} />
-        <BigNumber value={'20'} label={'Адвокатів у команді'} />
+        <BigNumber value={'30+'} label={'Адвокатів у команді'} />
       </div>
     </section>
   )
