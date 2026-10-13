@@ -1,6 +1,6 @@
 import 'server-only'
-import { initializeApp, getApps, cert } from 'firebase-admin/app'
-import { getDatabase } from 'firebase-admin/database'
+import { initializeApp, getApps, cert } from 'firebase-admin/app';
+import { getDatabase } from 'firebase-admin/database';
 import { getAuth } from "firebase-admin/auth";
 
 // Server Firebase configuration

@@ -5,5 +5,6 @@ export interface FeedbackType {
   phone: string;
   message: string;
   answered: string;
+  answer: string;
   date: string;
 }

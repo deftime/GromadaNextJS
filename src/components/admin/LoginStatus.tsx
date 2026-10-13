@@ -3,9 +3,10 @@
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { signOut } from 'firebase/auth';
-import { auth } from '@/api/firebase-client';
 
+import { auth } from '@/api/firebase-client';
 import { Auth } from "@/components/admin/AuthClientProvider";
+import { deleteSession } from "@/api/adminAuthSession";
 import '@/styles/admin/LoginStatus.scss';
 
 export function LoginStatus() {
@@ -18,6 +19,7 @@ export function LoginStatus() {
 
   const logoutHandler = async () => {
     await signOut(auth);
+    await deleteSession();
     router.push('/admin/login');
   }
 

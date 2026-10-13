@@ -10,11 +10,16 @@ import { FeedbackType } from "@/types/firebase-data";
 import { ref, set } from "firebase/database";
 import { db } from "@/api/firebase-client";
 
+// Тут возможна проблема "задержки" обновления даных в админке, после отправки новой заявки с формы
+// Возможно надо будет перейти на Server Actions + revalidatePath('/')
+// Или другие варианты форма обновления данных в админке (export const revalidate = 60, export const dynamic = 'force-dynamic')
+
 type FormProps = {
   title?: string,
   desc?: string,
 }
 
+// Особый тип, который матчит схему Yup с типами данных с формы
 type FormDataType = yup.InferType<typeof schema>
 
 // Конструктор-класс, который создает объект Фидбека
@@ -24,6 +29,7 @@ class FeObject implements FeedbackType {
   email: string;
   message: string;
   answered: string = '';
+  answer: string = '';
   readonly date: string = this.getFormattedDate();
   readonly id: string = this.genId();
 
@@ -48,6 +54,7 @@ class FeObject implements FeedbackType {
 
 }
 
+// Валидация Yup
 const schema = yup.object({
   name: yup.string().required('Enter your name!').min(3, 'Minimum 3 chars!'),
   phone: yup.string().matches(/^[0-9+\-() ]*$/, 'Тільки цифри та символи телефону'),
@@ -68,7 +75,6 @@ export function ContactForm({ title, desc }: FormProps) {
   });
 
   const onSend = async (data: FormDataType) => {
-    console.log(data);
     const fe = new FeObject(data.name, data.phone, data.email, data.message);
     try {
       await set(ref(db, 'Feedbacks/Fe-' + fe.id), fe);

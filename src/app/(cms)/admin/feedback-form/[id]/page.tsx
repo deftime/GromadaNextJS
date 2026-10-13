@@ -11,6 +11,7 @@ export default function FeedbackEdit() {
   // + ручной loading и скелетон
   // Firebase: useEffect and get all data
   // Firebase: update or delete by buttons
+  // Server Actions?
 
   return (
     <div className="admin-edit">
