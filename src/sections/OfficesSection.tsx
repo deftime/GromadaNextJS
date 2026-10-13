@@ -6,35 +6,39 @@ const OFFICES = [
     city: "Київ",
     label: "Головний офіс",
     desc: "Центральний офіс об'єднання. Тут зосереджені ключові практики та керівництво. Приймаємо клієнтів щодня та дистанційно.",
-    address: "вул. Хрещатик, 22, офіс 15, м. Київ, 01001",
-    phone: "+38 (044) 123-45-67",
-    email: "kyiv@gromada-zakon.ua",
-    head: "Олексій Васильченко",
-    headRole: "Керуючий партнер",
+    address: "вул. Володимирська, 42а, офіс 17",
+    phone: "+38 (097) 925-73-34",
+    email: "gromada.zackon@gmail.com",
     photo: "/img/office.jpg",
+    heads: [
+      {
+        name: "Лідія Горбунова",
+        role: "Голова Адвокатського об’єднання",
+        photo: "/img/Lidia-mini.jpg"
+      }
+    ]
   },
   {
-    city: "Львів",
+    city: "Івано-Франківськ",
     label: "Західний офіс",
-    desc: "Регіональний офіс із фокусом на цивільних та господарських спорах. Обслуговує клієнтів у Львівській, Волинській та Закарпатській областях.",
-    address: "пл. Ринок, 8, офіс 3, м. Львів, 79000",
-    phone: "+38 (032) 987-65-43",
-    email: "lviv@gromada-zakon.ua",
-    head: "Наталія Коваленко",
-    headRole: "Партнер, кримінальна практика",
-    photo: "/img/office.jpg",
-  },
-  {
-    city: "Харків",
-    label: "Східний офіс",
-    desc: "Офіс зі спеціалізацією на адміністративному праві та захисті бізнесу. Обслуговує клієнтів у Харківській, Полтавській та Сумській областях.",
-    address: "майдан Конституції, 1, офіс 210, м. Харків, 61022",
-    phone: "+38 (057) 456-78-90",
-    email: "kharkiv@gromada-zakon.ua",
-    head: "Марина Іщенко",
-    headRole: "Старший адвокат",
-    photo: "/img/office.jpg",
-  },
+    desc: "Західний міжрегіональний офіс адвокатського об’єднання «Громада і Закон» розташований у місті Івано-Франківську та забезпечує надання професійної правничої допомоги по всім західним областям.",
+    address: "вул. Довга, 60",
+    phone: "+38 (044) 337-54-67",
+    email: "hromadaizakonzahid@ukr.net",
+    photo: "/img/OfficeFrankivsk2.jpg",
+    heads: [
+      {
+        name: "Іван Тулик",
+        role: "Заступник Голови Об'єднання",
+        photo: "/img/Tulik-mini.jpg"
+      },
+      {
+        name: "Вікторія Досюк",
+        role: "Помічник адвоката",
+        photo: "/img/DosukHelper-mini.jpg"
+      },
+    ]
+  }
 ]
 
 export function OfficesSection() {
@@ -55,8 +59,7 @@ export function OfficesSection() {
                 address={office.address}
                 phone={office.phone}
                 email={office.email}
-                head={office.head}
-                headRole={office.headRole}
+                heads={office.heads}
                 photo={office.photo}
               />
             ),

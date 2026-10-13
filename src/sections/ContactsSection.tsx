@@ -29,7 +29,7 @@ const GENERAL_CONTACTS: Contact[] = [
   },
   {
     label: "Адреса",
-    value: "вул. Хрещатик, 22, офіс 15, Київ",
+    value: "вул. Володимирська, 42а, офіс 17, Київ",
     href: "https://maps.google.com",
     icon: 'point',
   },

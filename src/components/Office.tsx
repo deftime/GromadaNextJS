@@ -10,21 +10,24 @@ type OfficeProps = {
   address?: string;
   phone?: string;
   email?: string;
-  head?: string;
-  headRole?: string;
+  heads?: {
+    name: string;
+    role: string;
+    photo?: string;
+  }[];
   photo: string;
 }
 
-export function Office({ city, label, desc, address, phone, email, head, headRole, photo }: OfficeProps) {
+export function Office({ city, label, desc, address, phone, email, heads, photo }: OfficeProps) {
   return (
     <div className="block border border-solid border-[rgba(81,87,163,0.14)] rounded-xl overflow-hidden lg:flex even:flex-row-reverse">
 
       {/*Pic side*/}
-      <div className="bg-[#E8E4DF] min-h-70 shrink-0 w-auto lg:w-127">
+      <div className="relative bg-[#E8E4DF] min-h-70 shrink-0 w-auto lg:w-127">
         <Image
           src={photo}
           alt={`Офіс у ${city}`}
-          className="w-full h-full object-cover min-h-70"
+          className="absolute w-full h-full object-cover min-h-70"
           width={510}
           height={420}
         />
@@ -75,28 +78,33 @@ export function Office({ city, label, desc, address, phone, email, head, headRol
           </div>
         </div>
 
-        {(head && headRole) && <div className="mt-7 flex items-center gap-3 pt-5 border-t border-solid border-[rgba(81,87,163,0.12)]">
-          <div
-            className="shrink-0 flex items-center justify-center text-sm text-[#5157A3] font-semibold w-10 h-10 rounded-[50%] bg-[rgba(81,87,163,0.1)]"
-            style={{
-              fontFamily: "'Playfair Display', serif",
-            }}
-          >
-            {head
-              .split(" ")
-              .map((w) => w[0])
-              .join("")
-              .slice(0, 2)}
-          </div>
-          <div>
-            <span className="block text-sm text-[#241102] font-semibold">
-              {head}
-            </span>
-            <span className="block text-xs text-[#5157A3] opacity-80">
-              {headRole}
-            </span>
-          </div>
-        </div>}
+        <div className="mt-7 pt-5 border-t border-solid border-[rgba(81,87,163,0.12)]">
+          {(heads && heads.length > 0) && heads.map(head => {
+            return (
+              <div key={head.name} className="flex gap-3 mb-3.5 last:mb-0">
+                <div className="shrink-0 flex items-center justify-center text-sm text-[#5157A3] font-semibold w-10 h-10 rounded-[50%] bg-[rgba(81,87,163,0.1)]"
+                     style={{
+                       fontFamily: "'Playfair Display', serif",
+                     }}
+                >
+                  {head.photo ? (
+                    <Image src={head.photo} alt={head.name} width={40} height={40} className="block w-full h-full object-cover rounded-[50%]" />
+                  ) : (
+                    head.name.split(" ").map((w) => w[0]).join("").slice(0, 2)
+                  )}
+                </div>
+                <div>
+                  <span className="block text-sm text-[#241102] font-semibold">
+                    {head.name}
+                  </span>
+                  <span className="block text-xs text-[#5157A3] opacity-80">
+                    {head.role}
+                  </span>
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

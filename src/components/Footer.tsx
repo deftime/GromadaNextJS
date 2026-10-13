@@ -58,8 +58,8 @@ export function Footer() {
             <div className="text-xs text-[#FFBF37] font-semibold tracking-[0.18em] uppercase mb-6">
               Контакти
             </div>
-            <span className="block text-sm text-white/60 mb-3">вул. Хрещатик, 22, офіс 15</span>
-            <span className="block text-sm text-white/60 mb-3">м. Київ, 01001</span>
+            <span className="block text-sm text-white/60 mb-3">м. Київ</span>
+            <span className="block text-sm text-white/60 mb-3">вул. Володимирська, 42а, офіс 17</span>
             <span className="block text-sm text-white/60 mb-3">+38 (097) 925-73-34</span>
             <span className="block text-sm text-white/60 mb-3">gromada.zackon@gmail.com</span>
           </div>
