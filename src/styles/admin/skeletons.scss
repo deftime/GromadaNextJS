@@ -1,0 +1,26 @@
+@use '../variables' as *;
+@use '../templates' as *;
+
+.skeleton {
+  background-color: #e5e5e5;
+  padding: vw(20);
+  animation: skeleton 1s infinite ease;
+  &.list {
+    .top, .line, {
+      height: vw(45);
+      margin-bottom: vw(10);
+    }
+    .top {
+      background-color: gray;
+    }
+    .line {
+      background-color: #d1d1d1;
+    }
+    .more {
+      font-size: vw(30);
+      line-height: vw(10);
+      color: gray;
+      height: vw(20);
+    }
+  }
+}
