@@ -15,5 +15,6 @@ if (!getApps().length) {
   })
 }
 
+// Provide API tools
 export const dbServer = getDatabase();
 export const authServer = getAuth();

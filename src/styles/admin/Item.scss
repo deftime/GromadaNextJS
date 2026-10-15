@@ -19,8 +19,12 @@
   }
   .side-zone {
     display: flex;
-    gap: vw(10);
+    gap: vw(20);
     margin-left: auto;
+    .id {
+      width: vw(70);
+      text-align: right;
+    }
   }
   &:hover {
     background-color: #f0f0f0;

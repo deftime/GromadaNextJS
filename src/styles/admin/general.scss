@@ -81,7 +81,17 @@
   padding: vw(10) vw(15);
   background-color: #e5e5e5;
   .side-zone {
+    display: flex;
+    align-items: center;
+    gap: vw(20);
     margin-left: auto;
+    span {
+      flex-shrink: 0;
+      &:last-child {
+        width: vw(70);
+        text-align: right;
+      }
+    }
   }
 }
 
