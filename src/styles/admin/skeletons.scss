@@ -23,4 +23,28 @@
       height: vw(20);
     }
   }
+  &.edit {
+    .line {
+      height: vw(30);
+      margin-bottom: vw(10);
+      border-radius: vw(10);
+      background-color: #d1d1d1;
+    }
+    .area {
+      height: vw(100);
+      border-radius: vw(10);
+      background-color: #d1d1d1;
+      margin-bottom: vw(10);
+    }
+    .row {
+      display: flex;
+      gap: vw(10);
+    }
+    .btn {
+      height: vw(50);
+      width: vw(100);
+      border-radius: vw(10);
+      background-color: gray;
+    }
+  }
 }

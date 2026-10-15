@@ -21,14 +21,31 @@
     font-size: vw(12);
     line-height: vw(16);
     text-align: center;
-    border: none;
+    border: 2px solid $brandGreen;
     border-radius: vw(5);
     padding: vw(7) vw(15);
     background-color: $brandGreen;
     color: #fff;
     cursor: pointer;
     &:hover {
-      opacity: 0.8;
+      background: transparent;
+      color: $brandGreen;
+    }
+    &.sec {
+      background-color: #305987;
+      border-color: #305987;
+      &:hover {
+        background: transparent;
+        color: #305987;
+      }
+    }
+    &.warn {
+      background-color: #a42222;
+      border-color: #a42222;
+      &:hover {
+        background: transparent;
+        color: #a42222;
+      }
     }
   }
   &:nth-child(n+2) {
