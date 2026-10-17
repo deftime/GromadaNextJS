@@ -1,0 +1,15 @@
+@use '../variables' as *;
+
+.admin-msg {
+  font-size: vw(10);
+  line-height: vw(15);
+  color: #000;
+  width: fit-content;
+  padding: vw(5);
+  &.success {
+    color: $brandGreen;
+  }
+  &.error {
+    color: red;
+  }
+}

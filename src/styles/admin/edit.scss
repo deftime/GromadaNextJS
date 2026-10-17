@@ -1,5 +1,16 @@
 @use '../variables' as *;
 
+.admin-edit {
+  &.loading {
+    opacity: 0.5;
+    button, textarea {
+      pointer-events: none;
+      cursor: default;
+      filter: grayscale(1);
+    }
+  }
+}
+
 .edit-block {
   span, label {
     display: block;
@@ -12,6 +23,7 @@
     font-size: vw(15);
     line-height: vw(18);
     color: grey;
+    min-height: vw(18);
   }
   input, textarea {
     border-color: #000;
@@ -48,12 +60,12 @@
       }
     }
   }
-  &:nth-child(n+2) {
-    margin-top: vw(20);
-  }
   &.btns {
     display: flex;
     gap: vw(10);
+  }
+  &:nth-child(n+2) {
+    margin-top: vw(20);
   }
 }
 
@@ -92,4 +104,11 @@
   gap: vw(30) vw(40);
   padding: vw(10);
   background-color: #e5e5e5;
+}
+
+.btn-msg {
+  display: flex;
+  align-items: center;
+  gap: vw(10);
+  margin-right: auto;
 }
