@@ -1,0 +1,119 @@
+@use '../variables' as *;
+
+.admin-edit {
+  &.loading {
+    opacity: 0.5;
+    textarea {
+      pointer-events: none;
+      cursor: default;
+      filter: grayscale(1);
+    }
+    button {
+      pointer-events: none;
+      cursor: default;
+      background-color: grey;
+    }
+  }
+}
+
+.edit-block {
+  span, label {
+    display: block;
+    font-size: vw(10);
+    line-height: vw(14);
+    font-weight: 500;
+    margin-bottom: vw(3);
+  }
+  .data {
+    font-size: vw(15);
+    line-height: vw(18);
+    color: grey;
+    min-height: vw(18);
+  }
+  input, textarea {
+    border-color: #000;
+  }
+  button {
+    display: block;
+    font-size: vw(12);
+    line-height: vw(16);
+    text-align: center;
+    border: 2px solid $brandGreen;
+    border-radius: vw(5);
+    padding: vw(7) vw(15);
+    background-color: $brandGreen;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      background: transparent;
+      color: $brandGreen;
+    }
+    &.sec {
+      background-color: #305987;
+      border-color: #305987;
+      &:hover {
+        background: transparent;
+        color: #305987;
+      }
+    }
+    &.warn {
+      background-color: #a42222;
+      border-color: #a42222;
+      &:hover {
+        background: transparent;
+        color: #a42222;
+      }
+    }
+  }
+  &.btns {
+    display: flex;
+    gap: vw(10);
+  }
+  &:nth-child(n+2) {
+    margin-top: vw(20);
+  }
+}
+
+.param-block {
+  span {
+    font-size: vw(10);
+    line-height: vw(14);
+    color: #000;
+    &:last-child {
+      color: grey;
+    }
+  }
+}
+
+.edit-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: vw(30) vw(70);
+  .edit-block {
+    margin: 0;
+  }
+}
+
+.edit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: vw(30) vw(70);
+  .edit-block {
+    margin: 0;
+  }
+}
+
+.params-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: vw(30) vw(40);
+  padding: vw(10);
+  background-color: #e5e5e5;
+}
+
+.btn-msg {
+  display: flex;
+  align-items: center;
+  gap: vw(10);
+  margin-right: auto;
+}

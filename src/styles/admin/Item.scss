@@ -1,0 +1,32 @@
+@use '../variables' as *;
+
+.admin-item {
+  display: flex;
+  align-items: center;
+  gap: vw(20);
+  font-size: vw(12);
+  line-height: vw(15);
+  border-bottom: 1px solid #000;
+  padding: vw(10) vw(15);
+  .num {
+    font-weight: 600;
+  }
+  .title {
+    max-width: vw(300);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .side-zone {
+    display: flex;
+    gap: vw(20);
+    margin-left: auto;
+    .id {
+      width: vw(70);
+      text-align: right;
+    }
+  }
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}

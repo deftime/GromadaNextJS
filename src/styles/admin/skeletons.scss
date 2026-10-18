@@ -1,0 +1,65 @@
+@use '../variables' as *;
+@use '../templates' as *;
+
+.skeleton {
+  background-color: #e5e5e5;
+  padding: vw(20);
+  animation: skeleton 1s infinite ease;
+  &.list {
+    .top, .line, {
+      height: vw(45);
+      margin-bottom: vw(10);
+    }
+    .top {
+      background-color: gray;
+    }
+    .line {
+      background-color: #d1d1d1;
+    }
+    .more {
+      font-size: vw(30);
+      line-height: vw(10);
+      color: gray;
+      height: vw(20);
+    }
+  }
+  &.edit {
+    .line {
+      height: vw(30);
+      margin-bottom: vw(10);
+      border-radius: vw(10);
+      background-color: #d1d1d1;
+    }
+    .area {
+      height: vw(100);
+      border-radius: vw(10);
+      background-color: #d1d1d1;
+      margin-bottom: vw(10);
+    }
+    .row {
+      display: flex;
+      gap: vw(10);
+    }
+    .btn {
+      height: vw(50);
+      width: vw(100);
+      border-radius: vw(10);
+      background-color: gray;
+    }
+  }
+}
+
+.skeleton-login {
+  width: vw(300);
+  padding: vw(100) vw(20) vw(20) vw(20);
+  border-radius: vw(10);
+  background-color: #cacce3;
+  animation: skeleton 2s infinite ease;
+  span {
+    display: block;
+    height: vw(40);
+    margin-bottom: vw(10);
+    background-color: grey;
+    border-radius: vw(10);
+  }
+}
