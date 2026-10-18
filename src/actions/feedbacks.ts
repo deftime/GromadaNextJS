@@ -3,7 +3,7 @@
 import { dbServer } from "@/api/firebase-server";
 import { verifySession } from "@/api/adminAuthVerify";
 
-// Server Action функции для работы с базой Firebase
+// Server Action функции для Feedback Form
 
 export async function updateFeedback(answer: string, id: string) {
   const session = await verifySession();

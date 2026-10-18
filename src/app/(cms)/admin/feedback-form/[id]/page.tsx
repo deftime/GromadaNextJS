@@ -98,6 +98,10 @@ export default function FeedbackEdit() {
             <span>Answered: </span>
             <span>{item.answered}</span>
           </div>
+          <div className="param-block">
+            <span>Date: </span>
+            <span>{item.date}</span>
+          </div>
         </div>
         <div className="edit-block">
           <span>Name</span>

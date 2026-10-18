@@ -1,5 +1,5 @@
 export default function Panel() {
   return (
-    <div>Main admin Panel</div>
+    <div className="text-center">Welcome to administration panel!</div>
   )
 }

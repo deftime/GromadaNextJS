@@ -1,0 +1,22 @@
+@use '../variables' as *;
+
+.admin-list.feedbacks-page {
+  .admin-list-head {
+    .side-zone {
+      .list-date {
+        flex-shrink: 0;
+        width: vw(70);
+        text-align: right;
+      }
+    }
+  }
+  .admin-item {
+    .side-zone {
+      .option:nth-child(2) {
+        flex-shrink: 0;
+        text-align: right;
+        width: vw(70);
+      }
+    }
+  }
+}
