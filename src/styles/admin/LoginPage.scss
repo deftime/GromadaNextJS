@@ -40,8 +40,13 @@
     color: #fff;
     cursor: pointer;
     margin-top: vw(23);
-    &:hover {
+    &:hover:not(.load) {
       opacity: 0.8;
+    }
+    &.load {
+      opacity: 0.5;
+      cursor: default;
+      background-color: grey;
     }
   }
   .error {
@@ -54,21 +59,6 @@
     min-height: vw(15);
     + button {
       margin-top: vw(3);
-    }
-  }
-
-  .skeleton-login {
-    width: vw(300);
-    padding: vw(100) vw(20) vw(20) vw(20);
-    border-radius: vw(10);
-    background-color: #cacce3;
-    animation: skeleton 2s infinite ease;
-    span {
-      display: block;
-      height: vw(40);
-      margin-bottom: vw(10);
-      background-color: grey;
-      border-radius: vw(10);
     }
   }
 }

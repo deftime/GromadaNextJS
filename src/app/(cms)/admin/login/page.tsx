@@ -7,6 +7,7 @@ import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from '@/api/firebase-client';
 import { createSession, deleteSession } from "@/api/adminAuthSession";
 
+import { SkeletonLogin } from "@/components/admin/Skeletons";
 import '@/styles/admin/edit.scss';
 import '@/styles/admin/LoginPage.scss';
 
@@ -21,7 +22,8 @@ type FormDataType = {
 
 export default function Login() {
   const [error, setError] = useState<string | null>(null);
-  const [ready, setReady] = useState<boolean>(false);
+  const [ready, setReady] = useState<boolean>(false); // Ждем готовность формы после проверка статусов логина
+  const [isLoading, setLoading] = useState<boolean>(false); // А тут просто следим за процесом логина
   const router = useRouter();
 
   useEffect(()=>{
@@ -30,16 +32,30 @@ export default function Login() {
 
   const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setError(null);
+    setLoading(true);
     const formData: FormDataType = Object.fromEntries(new FormData(event.currentTarget)) as FormDataType;
+    let token: string;
+
     try {
       const credential = await signInWithEmailAndPassword(auth, formData.username, formData.password);
-      const token = await credential.user.getIdToken();
-      await createSession(token);
-      setError(null);
-      router.replace('/admin');
+      token = await credential.user.getIdToken();
     } catch {
       setError('Wrong Login or Password!');
+      setLoading(false);
+      return
     }
+
+    try {
+      await createSession(token);
+    } catch {
+      setError('Create session failed!');
+      setLoading(false);
+      return;
+    }
+
+    router.replace('/admin');
+
   }
 
   return (
@@ -54,13 +70,10 @@ export default function Login() {
             <input type="password" name="password" placeholder="Password" required />
           </div>
           {error && <span className="error">{error}</span>}
-          <button type="submit">Enter</button>
+          <button className={isLoading ? 'load' : ''} type="submit">Enter</button>
         </form>
       ) : (
-        <div className="skeleton-login">
-          <span></span>
-          <span></span>
-        </div>
+        <SkeletonLogin />
       )}
     </section>
   )

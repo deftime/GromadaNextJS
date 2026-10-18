@@ -27,3 +27,12 @@ export function SkeletonEdit() {
     </div>
   )
 }
+
+export function SkeletonLogin() {
+  return (
+    <div className="skeleton-login">
+      <span></span>
+      <span></span>
+    </div>
+  )
+}

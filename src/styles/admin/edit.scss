@@ -3,10 +3,15 @@
 .admin-edit {
   &.loading {
     opacity: 0.5;
-    button, textarea {
+    textarea {
       pointer-events: none;
       cursor: default;
       filter: grayscale(1);
+    }
+    button {
+      pointer-events: none;
+      cursor: default;
+      background-color: grey;
     }
   }
 }

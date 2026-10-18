@@ -27,5 +27,10 @@
     "clsx": "^2.1.1",
     "sass": "^1.104.1",
     "typescript": "^5"
+  },
+  "overrides": {
+    "firebase-admin": {
+      "jwks-rsa": "3.2.2"
+    }
   }
 }

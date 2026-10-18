@@ -48,3 +48,18 @@
     }
   }
 }
+
+.skeleton-login {
+  width: vw(300);
+  padding: vw(100) vw(20) vw(20) vw(20);
+  border-radius: vw(10);
+  background-color: #cacce3;
+  animation: skeleton 2s infinite ease;
+  span {
+    display: block;
+    height: vw(40);
+    margin-bottom: vw(10);
+    background-color: grey;
+    border-radius: vw(10);
+  }
+}
