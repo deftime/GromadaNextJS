@@ -9,7 +9,7 @@ const OFFICES = [
     address: "вул. Володимирська, 42а, офіс 17",
     phone: "+38 (097) 925-73-34",
     email: "gromada.zackon@gmail.com",
-    photo: "/img/office.jpg",
+    photo: "/img/office-ua.png",
     heads: [
       {
         name: "Лідія Горбунова",
@@ -36,6 +36,11 @@ const OFFICES = [
         name: "Вікторія Досюк",
         role: "Помічник адвоката",
         photo: "/img/DosukHelper-mini.jpg"
+      },
+      {
+        name: "Мар'яна Яремчук",
+        role: "Помічник адвоката",
+        photo: "/img/Yaremchuk-mini.jpg"
       },
     ]
   }
