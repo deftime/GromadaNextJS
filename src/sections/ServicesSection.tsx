@@ -37,6 +37,11 @@ const SERVICES = [
     desc: "Розлучення, аліменти, опіка, розділ майна.",
     icon: '/img/family.svg',
   },
+  {
+    title: "Кредитні справи",
+    desc: "Реструктуризація боргів, банкрутство, спори з банками.",
+    icon: '/img/credit.svg',
+  },
 ]
 
 export function ServicesSection() {
