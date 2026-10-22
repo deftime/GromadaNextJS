@@ -2,14 +2,11 @@
 
 import { useEffect, useState, useTransition } from "react";
 import { useParams } from 'next/navigation';
-import { ref, get } from "firebase/database";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
 import { FeedbackType } from "@/types/firebase-data";
-import { db } from "@/api/firebase-client";
-
-import { deleteFeedback, updateFeedback } from "@/actions/feedbacks";
+import { deleteFeedback, getFeedback, updateFeedback } from "@/actions/feedbacks";
 
 import { Msg } from "@/components/admin/Msg";
 import { SkeletonEdit } from "@/components/admin/Skeletons";
@@ -27,11 +24,10 @@ export default function FeedbackEdit() {
 
   // Один раз получаем данные Фидбека
   useEffect(()=> {
-    const dbRef = ref(db, `Feedbacks/Fe-${id}`);
-    get(dbRef).then(snapshot => {
-      if (snapshot.exists()) {
-        setItem(snapshot.val());
-        setAnswerText(snapshot.val().answer);
+    getFeedback(id).then(result => {
+      if (result.data) {
+        setItem(result.data);
+        setAnswerText(result.data.answer);
       } else {
         setMsg({text: 'Error get data. No data available!', status: 'error'});
       }

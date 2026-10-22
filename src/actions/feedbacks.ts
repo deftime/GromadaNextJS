@@ -33,3 +33,15 @@ export async function deleteFeedback(id: string) {
 
   await dbRef.remove();
 }
+
+export async function getFeedback(id: string) {
+  await verifySession();
+  const dbRef = dbServer.ref(`Feedbacks/Fe-${id}`);
+
+  const snapshot = await dbRef.once('value');
+  if (!snapshot.exists()) {
+    return { error: 'DB path failed! Feedback not found.' };
+  }
+
+  return { data: snapshot.val() };
+}
