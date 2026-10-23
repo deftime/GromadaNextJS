@@ -1,0 +1,19 @@
+@use '../variables' as *;
+
+
+.showMore {
+  position: relative;
+  transition: 0.5s ease-in-out;
+  overflow: hidden;
+  overflow-anchor: none;
+  margin-bottom: 20px;
+  &.close:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
+}

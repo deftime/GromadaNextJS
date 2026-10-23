@@ -2,22 +2,22 @@
 
 .btnLink {
   display: block;
-  font-size: vw(14);
-  line-height: vw(19);
-  font-weight: 700;
-  color: #000;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: $brandBlack;
+  letter-spacing: 1.5px;
   text-align: center;
   text-transform: uppercase;
-  padding: vw(14) vw(28);
+  padding: 14px 28px;
   background-color: $brandYellow;
   border: 1px solid $brandYellow;
-  border-radius: vw(4);
   width: fit-content;
   transition: 0.3s ease;
   cursor: pointer;
   &:hover {
     background: transparent;
-    color: $brandYellow;
+    color: $brandBlack;
   }
   &.empty {
     background-color: transparent;
@@ -26,5 +26,11 @@
       background-color: $brandYellow;
       color: #000;
     }
+  }
+  &.center {
+    margin: 0 auto;
+  }
+  &.right {
+    margin-left: auto;
   }
 }

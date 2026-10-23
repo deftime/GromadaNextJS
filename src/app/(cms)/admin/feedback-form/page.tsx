@@ -4,11 +4,13 @@ import { FeedbackType } from "@/types/firebase-data";
 import { arrFromObject } from "@/utils/arrFromObject";
 import { Item } from "@/components/admin/Item";
 import '@/styles/admin/FeedbacksPage.scss';
+import { sortByDate } from "@/utils/sortByDate";
 
 export default async function FeedbackForm() {
   await verifySession(); // Проверка сессии, серверная админская авторизация
   const snapshot = await dbServer.ref('Feedbacks').once('value'); // Получаем данные прямо в теле компонента
-  const readyData: FeedbackType[] = arrFromObject(snapshot.val()); // Превращаем в массив
+  const unsortedData: FeedbackType[] = arrFromObject(snapshot.val()); // Превращаем в массив
+  const readyData = sortByDate(unsortedData); // Сортируем по дате
 
   return (
     <div className="admin-list feedbacks-page">

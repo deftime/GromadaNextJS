@@ -22,6 +22,10 @@
   }
   .edit-block {
     input {
+      font-size: vw(12);
+      line-height: vw(16);
+      padding: vw(10) vw(14);
+      border-radius: vw(8);
       border: none;
     }
     &:nth-child(n+2) {
@@ -33,7 +37,7 @@
     line-height: vw(18);
     font-weight: 500;
     width: 100%;
-    padding: vw(7) vw(10);
+    padding: vw(10);
     border: none;
     border-radius: vw(5);
     background-color: $brandGreen;

@@ -1,5 +1,6 @@
 import { Title } from "@/components/Title";
 import { Person } from "@/components/Person";
+import { ShowMoreLayout } from "@/components/ShowMoreLayout";
 
 const TEAM = [
   {
@@ -125,11 +126,13 @@ export function TeamSection() {
 
         <Title sup={'Команда фахівців'} title={'Наша команда'} />
 
-        <div className="grid grid-cols-1 gap-8 md:gap-10 md:grid-cols-3 sm:grid-cols-2">
-          {TEAM.map((person) => (
-            <Person key={person.name} name={person.name} role={person.role} bio={person.bio} photo={person.photo} />
-          ))}
-        </div>
+        <ShowMoreLayout maxHeight={700} maxHeightMobile={1940}>
+          <div className="grid grid-cols-1 gap-8 md:gap-10 md:grid-cols-3 sm:grid-cols-2">
+            {TEAM.map((person) => (
+              <Person key={person.name} name={person.name} role={person.role} bio={person.bio} photo={person.photo} />
+            ))}
+          </div>
+        </ShowMoreLayout>
 
       </div>
     </section>
