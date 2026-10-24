@@ -1,5 +1,5 @@
 import { TopSection } from "@/sections/TopSection";
-import { AboutSection } from "@/sections/AboutSectiom";
+import { AboutSection } from "@/sections/AboutSection";
 import { TeamSection } from "@/sections/TeamSection";
 import { ServicesSection } from "@/sections/ServicesSection";
 import { OfficesSection } from "@/sections/OfficesSection";
