@@ -1,23 +1,10 @@
 import CheckIcon from "@/assets/check.svg";
 
-const SERVICES = [
-  "Захищаємо право власності та інші майнові права",
-  "Супроводжуємо спадкові справи та спори між спадкоємцями",
-  "Вирішуємо сімейні спори й питання поділу майна",
-  "Стягуємо заборгованість за договорами та розписками",
-  "Оскаржуємо недійсні правочини та договори",
-  "Представляємо у справах про відшкодування шкоди",
-  "Захищаємо честь, гідність і ділову репутацію",
-  "Супроводжуємо житлові та земельні спори",
-  "Ведемо справи про захист прав споживачів",
-  "Домагаємося виконання судових рішень",
-]
-
 type ListProps = {
   list: string[];
 }
 
-export function ListFeaturesSection() {
+export function ListFeaturesSection({ list }: ListProps) {
   return (
     <section id="next" className="px-6 bg-[#FAFAF8] md:px-16 py-24 md:py-36">
       <div className="max-w-6xl mx-auto">
@@ -31,7 +18,7 @@ export function ListFeaturesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 border-t border-[rgba(81,87,163,0.2)]">
-          {SERVICES.map((service) => (
+          {list.map((service) => (
             <div key={service} className="group flex items-start gap-5 md:gap-7 py-7 md:py-9 md:px-6 border-b border-[rgba(81,87,163,0.2)]">
               <img src={CheckIcon.src} alt="check" className="block h-auto w-9 shrink-0 mt-2" />
               <div className="font-['PlayfairDisplay'] text-[18px] md:text-[25px] text-[#241102] font-semibold leading-[1.35]">

@@ -11,6 +11,7 @@ const SERVICES = [
     title: "Цивільні справи",
     desc: "Стягнення боргу, збитків, майнові спори, спадщина, медичні помилки, авторське право, торгова марка.",
     icon: '/img/civil.svg',
+    url: '/services/civilni-spravy',
   },
   {
     title: "Господарські справи",
@@ -53,7 +54,7 @@ export function ServicesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {SERVICES.map((service) => (
-            <ServicePlate key={service.title} icon={service.icon} title={service.title} desc={service.desc} />
+            <ServicePlate key={service.title} icon={service.icon} title={service.title} desc={service.desc} link={service.url} />
           ))}
         </div>
       </div>

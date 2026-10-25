@@ -6,11 +6,14 @@ type ServicePlateProps = {
   icon: string,
   title: string,
   desc: string,
+  link?: string
 }
 
-export function ServicePlate({ icon, title, desc }: ServicePlateProps) {
+export function ServicePlate({ icon, title, desc, link }: ServicePlateProps) {
+  const Tag = link ? 'a' : 'div';
+
   return (
-    <div className={clsx(cls.service, "group flex items-start gap-4 p-7 bg-white border border-solid rounded-xl border-[rgba(81,87,163,0.18)] hover:shadow-md transition-shadow duration-300")}>
+    <Tag {...link ? { href: link } : undefined} className={clsx(cls.service, "group flex items-start gap-4 p-7 bg-white border border-solid rounded-xl border-[rgba(81,87,163,0.18)] hover:shadow-md transition-shadow duration-300")}>
 
       <Image src={icon} alt={'service icon'} width={28} height={28} className="shrink-0 w-10 h-10 sm:w-14 sm:h-14" />
 
@@ -23,6 +26,6 @@ export function ServicePlate({ icon, title, desc }: ServicePlateProps) {
         </span>
       </div>
 
-    </div>
+    </Tag>
   )
 }
