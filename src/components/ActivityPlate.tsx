@@ -21,7 +21,7 @@ export function ActivityPlate({ num, category, title, text, isPopuped = false }:
 
   return (
     <>
-      <div className={clsx(isPopuped && "hover:bg-[#FFBF37] cursor-pointer", "group min-h-82 p-8 md:p-9 flex flex-col bg-white transition-colors duration-300")} onClick={() => isPopuped && setIsOpenPopup(true)}>
+      <div className={clsx(isPopuped && "hover:bg-[#FFBF37] cursor-pointer", "group min-h-82 p-8 md:p-9 flex flex-col bg-white transition-colors duration-300 border-r border-b border-[#D9D9E6]")} onClick={() => isPopuped && setIsOpenPopup(true)}>
         <div className="flex items-center justify-between mb-14">
           <span className="text-[10px] text-[#5157A3] font-semibold tracking-[0.18em] uppercase">
             {category}

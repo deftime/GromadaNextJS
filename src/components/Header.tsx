@@ -1,26 +1,11 @@
-import Image from "next/image";
-import clsx from "clsx";
-import logo from '@/assets/logo.svg';
-import cls from '@/styles/modules/header.module.scss'
+import { MainLogo } from "@/components/MainLogo";
 
-export function Header() {
+export async function Header() {
+
   return (
     <header className="absolute w-full z-100 flex items-center justify-between px-8 md:px-16 pt-8 pb-6">
-
-      //TODO: Сделать линк на логтип для внутренних ИЛИ добавить Главную в меню
-
-      <div className="flex items-center gap-4">
-        <Image src={logo} alt="Логотип Громада і Закон" className="h-14 w-14 object-contain shrink-0" width={48} height={48}/>
-        <div className={cls.logoText}>
-          <span className="block text-xs text-white/60 tracking-[0.2em] uppercase mb-1">
-            Адвокатське об'єднання
-          </span>
-          <span className="block font-bold text-2xl text-[#FFBF37] leading-tight tracking-wider">
-            Громада і Закон
-          </span>
-        </div>
-      </div>
-      <nav className={clsx(cls.nav, "hidden md:flex items-center gap-8")} aria-label="Основна навігація">
+      <MainLogo />
+      <nav className="hidden min-[1100px]:flex items-center gap-8" aria-label="Основна навігація">
         <a href="/#about" className="text-sm text-white/80 tracking-wider transition-colors duration-200 hover:text-[#FFBF37]">
           Про нас
         </a>
