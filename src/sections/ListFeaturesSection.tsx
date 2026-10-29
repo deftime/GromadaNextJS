@@ -5,6 +5,8 @@ type ListProps = {
 }
 
 export function ListFeaturesSection({ list }: ListProps) {
+  if (list.length === 0) return null;
+
   return (
     <section id="next" className="px-6 bg-[#FAFAF8] md:px-16 py-24 md:py-36">
       <div className="max-w-6xl mx-auto">

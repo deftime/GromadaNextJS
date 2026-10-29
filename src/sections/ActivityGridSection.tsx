@@ -10,6 +10,8 @@ type ActivityProps = {
 };
 
 export function ActivityGridSection({ activities }: ActivityProps) {
+  if (activities.length === 0) return null;
+
   return (
     <section className="px-6 bg-white md:px-16 py-24 md:py-36">
       <div className="max-w-6xl mx-auto">

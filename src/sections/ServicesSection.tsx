@@ -6,6 +6,7 @@ const SERVICES = [
     title: "Адмінистративні справи",
     desc: "Оскарження рішень органів державної виконавчої влади та органів місцевого самоврядування.",
     icon: '/img/admin.svg',
+    url: '/services/administrativni-spravy',
   },
   {
     title: "Цивільні справи",
@@ -17,31 +18,37 @@ const SERVICES = [
     title: "Господарські справи",
     desc: "Договори, банкрутство, корпоративні спори, тендери.",
     icon: '/img/gosp.svg',
+    url: '/services/gospodarsky-spravy',
   },
   {
     title: "Військові справи",
     desc: "Мобілізація, ВЛК, контракти, соціальний захист військових.",
     icon: '/img/military.svg',
+    url: '/services/vyiskovi-spravy',
   },
   {
     title: "Кримінальні справи",
     desc: "Підозра, затримання, обшук, досудове розслідування, судовий розгляд.",
     icon: '/img/criminal.svg',
+    url: '/services/cryminalni-spravy',
   },
   {
     title: "Трудові та пенсійні справи",
     desc: "Незаконне звільнення, невиплата зарплати, занижена пенсія, трудові спори.",
     icon: '/img/deal.svg',
+    url: '/services/trydovi-spravy',
   },
   {
     title: "Сімейні справи",
     desc: "Розлучення, аліменти, опіка, розділ майна.",
     icon: '/img/family.svg',
+    url: '/services/symeini-spravy',
   },
   {
     title: "Кредитні справи",
     desc: "Реструктуризація боргів, банкрутство, спори з банками.",
     icon: '/img/credit.svg',
+    url: '/services/creditni-spravy',
   },
 ]
 
