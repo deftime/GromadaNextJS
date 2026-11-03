@@ -37,20 +37,29 @@ export function Footer() {
             <div className="text-xs text-[#FFBF37] font-semibold tracking-[0.18em] uppercase mb-6">
               Напрямки
             </div>
-            <Link href="#" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
+            <Link href="/services/cryminalni-spravy" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
               Кримінальний
             </Link>
-            <Link href="#" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
+            <Link href="/services/civilni-spravy" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
               Цивільний
             </Link>
-            <Link href="#" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
+            <Link href="/services/administrativni-spravy" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
               Адміністративний
             </Link>
-            <Link href="#" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
+            <Link href="/services/gospodarsky-spravy" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
               Господарський
             </Link>
-            <Link href="#" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
-              Консультації
+            <Link href="/services/vyiskovi-spravy" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
+              Військовий
+            </Link>
+            <Link href="/services/trydovi-spravy" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
+              Трудовий
+            </Link>
+            <Link href="/services/symeini-spravy" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
+              Сімейний
+            </Link>
+            <Link href="/services/creditni-spravy" className="block text-sm text-white/60 transition-colors duration-200 hover:text-[#FFBF37] mb-3">
+              Кредитний
             </Link>
           </div>
 
