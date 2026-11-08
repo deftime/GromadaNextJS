@@ -3,8 +3,8 @@ import { dbServer } from "@/api/firebase-server";
 import { FeedbackType } from "@/types/firebase-data";
 import { arrFromObject } from "@/utils/arrFromObject";
 import { Item } from "@/components/admin/Item";
-import '@/styles/admin/FeedbacksPage.scss';
 import { sortByDate } from "@/utils/sortByDate";
+import '@/styles/admin/FeedbacksPage.scss';
 
 export default async function FeedbackForm() {
   await verifySession(); // Проверка сессии, серверная админская авторизация

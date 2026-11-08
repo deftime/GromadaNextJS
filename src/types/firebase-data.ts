@@ -8,3 +8,12 @@ export interface FeedbackType {
   answer: string;
   date: string;
 }
+
+export interface TeamMemberType {
+  id: string;
+  name: string;
+  status: string;
+  desc: string;
+  photo: string;
+  order: number;
+}

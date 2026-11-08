@@ -1,0 +1,15 @@
+@use '../variables' as *;
+
+.admin-list.team-page {
+  .list-order {
+    text-align: right;
+    width: vw(50);
+  }
+  .admin-item {
+    .option:nth-child(2) {
+      flex-shrink: 0;
+      text-align: right;
+      width: vw(50);
+    }
+  }
+}
