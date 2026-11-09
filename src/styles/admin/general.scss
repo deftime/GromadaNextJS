@@ -102,3 +102,20 @@
   font-weight: 500;
   padding: vw(20);
 }
+
+.btn-admin {
+  display: block;
+  font-size: vw(12);
+  line-height: vw(16);
+  text-align: center;
+  border-radius: vw(5);
+  padding: vw(7) vw(15);
+  margin-top: vw(20);
+  width: fit-content;
+  background-color: $brandGreen;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}

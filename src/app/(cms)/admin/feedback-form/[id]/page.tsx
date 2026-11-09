@@ -24,16 +24,22 @@ export default function FeedbackEdit() {
 
   // Один раз получаем данные Фидбека
   useEffect(()=> {
+    let ignore: boolean = false;
     getFeedback(id).then(result => {
-      if (result.data) {
+      if (result.data && !ignore) {
         setItem(result.data);
         setAnswerText(result.data.answer);
-      } else {
+      } else if (!ignore) {
         setMsg({text: 'Error get data. No data available!', status: 'error'});
       }
     }).catch((error) => {
       console.error(error);
     });
+
+    // Очистка данных, которые могут прийти з задержкой и стать неактуальынми.
+    return () => {
+      ignore = true;
+    }
   }, [id])
 
   // Сохраняем ответ

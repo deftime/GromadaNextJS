@@ -5,6 +5,7 @@ import { arrFromObject } from "@/utils/arrFromObject";
 import { Item } from "@/components/admin/Item";
 import { sortByOrder } from "@/utils/sortByOrder";
 import '@/styles/admin/TeamPage.scss';
+import Link from "next/link";
 
 export default async function Team() {
   await verifySession();
@@ -24,9 +25,13 @@ export default async function Team() {
         </div>
       </div>
       {readyData.length > 0 ? (
-        readyData.map((item, index) => (
-          <Item key={item.id} num={index + 1} title={item.name} href={`team/${item.id}`} id={item.id} options={[item.status, item.order]} />
-        ))
+        <>
+          {readyData.map((item, index) => (
+            <Item key={item.id} num={index + 1} title={item.name} href={`team/${item.id}`} id={item.id}
+                  options={[item.status, item.order]}/>
+          ))}
+          <Link href="/admin/team/new" className="btn-admin">Add new member</Link>
+        </>
       ) : (
           <div className="admin-no-data">No feedbacks items</div>
       )}

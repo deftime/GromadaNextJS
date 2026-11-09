@@ -5,10 +5,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import clsx from "clsx";
-
-import { FeedbackType } from "@/types/firebase-data";
 import { ref, set } from "firebase/database";
+
 import { db } from "@/api/firebase-client";
+import { FeObject } from "@/types/classes";
 
 // Тут возможна проблема "задержки" обновления даных в админке, после отправки новой заявки с формы
 // Возможно надо будет перейти на Server Actions + revalidatePath('/')
@@ -21,38 +21,6 @@ type FormProps = {
 
 // Особый тип, который матчит схему Yup с типами данных с формы
 type FormDataType = yup.InferType<typeof schema>
-
-// Конструктор-класс, который создает объект Фидбека
-class FeObject implements FeedbackType {
-  name: string;
-  phone: string;
-  email: string;
-  message: string;
-  answered: string = '';
-  answer: string = '';
-  readonly date: string = this.getFormattedDate();
-  readonly id: string = this.genId();
-
-  constructor(name: string, phone: string = '', email: string, text: string) {
-    this.name = name;
-    this.phone = phone;
-    this.email = email;
-    this.message = text;
-  }
-
-  private getFormattedDate() {
-    const now = new Date();
-    const day = String(now.getDate()).padStart(2, '0');
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const year = now.getFullYear();
-    return `${day}.${month}.${year}`;
-  }
-
-  private genId() {
-    return `${Math.floor(Math.random() * 100000)}`;
-  }
-
-}
 
 // Валидация Yup
 const schema = yup.object({
