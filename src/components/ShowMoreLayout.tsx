@@ -46,7 +46,7 @@ export function ShowMoreLayout({ children, maxHeight, maxHeightMobile = undefine
       >
         {children}
       </div>
-      <Button text={close ? "Показати більше" : "Показати менше"}   onAction={handleButton} position="center" />
+      <Button text={close ? "Показати більше" : "Показати менше"} onAction={handleButton} position="center" />
     </>
   );
 }
