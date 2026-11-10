@@ -63,7 +63,7 @@ export function ContactsSection() {
               Соціальні мережі та месенджери
             </div>
             <div className="flex justify-center md:justify-normal gap-10">
-              <a href="https://www.facebook.com/gromadaizakon" target="_blank" className="block w-10 h-10 hover:-translate-y-1 hover:opacity-80 transition-all duration-200">
+              <a href="https://www.facebook.com/ao.gromadaizakon" target="_blank" className="block w-10 h-10 hover:-translate-y-1 hover:opacity-80 transition-all duration-200">
                 <Image src={fbIcon} alt="facebook" width={40} height={40} />
               </a>
               <a href="viber://chat?number=+380979257334" target="_blank" className="block w-10 h-10 hover:-translate-y-1 hover:opacity-80 transition-all duration-200">
