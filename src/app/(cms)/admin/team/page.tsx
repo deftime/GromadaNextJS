@@ -11,7 +11,7 @@ export default async function Team() {
   await verifySession();
   const snapshot = await dbServer.ref('Team').once('value');
   const unsortedData: TeamMemberType[] = arrFromObject(snapshot.val());
-  const readyData = sortByOrder(unsortedData); // Сортируем по дате
+  const readyData: TeamMemberType[] = sortByOrder(unsortedData); // Сортируем по Порядку
 
   return (
     <div className="admin-list team-page">
@@ -28,7 +28,7 @@ export default async function Team() {
         <>
           {readyData.map((item, index) => (
             <Item key={item.id} num={index + 1} title={item.name} href={`team/${item.id}`} id={item.id}
-                  options={[item.status, item.order]}/>
+                  options={[item.status, item.order.toString()]}/>
           ))}
           <Link href="/admin/team/new" className="btn-admin">Add new member</Link>
         </>

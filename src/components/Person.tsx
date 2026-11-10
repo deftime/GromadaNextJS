@@ -16,7 +16,7 @@ export function Person({ name, bio, photo, role }: PersonProps) {
         style={{ aspectRatio: "5/4"}}
       >
         <Image
-          src={photo}
+          src={photo === '' ? '/img/dummy.jpg' : photo}
           alt={name}
           width={360}
           height={285}
