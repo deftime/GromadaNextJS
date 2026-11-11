@@ -6,10 +6,14 @@
     width: vw(50);
   }
   .admin-item {
-    .option:nth-child(2) {
+    .option:nth-child(2),
+    .option:nth-child(3) {
       flex-shrink: 0;
       text-align: right;
       width: vw(50);
+    }
+    .option:nth-child(3) {
+      font-size: vw(15);
     }
   }
 }

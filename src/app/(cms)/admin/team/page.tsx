@@ -1,11 +1,12 @@
+import Link from "next/link";
+
 import { verifySession } from "@/api/adminAuthVerify";
 import { dbServer } from "@/api/firebase-server";
 import { TeamMemberType } from "@/types/firebase-data";
 import { arrFromObject } from "@/utils/arrFromObject";
-import { Item } from "@/components/admin/Item";
 import { sortByOrder } from "@/utils/sortByOrder";
+import { Item } from "@/components/admin/Item";
 import '@/styles/admin/TeamPage.scss';
-import Link from "next/link";
 
 export default async function Team() {
   await verifySession();
@@ -21,14 +22,15 @@ export default async function Team() {
         <div className="side-zone">
           <span className="list-status">Status</span>
           <span className="list-order">Order</span>
+          <span className="list-order">Active</span>
           <span>ID</span>
         </div>
       </div>
       {readyData.length > 0 ? (
         <>
           {readyData.map((item, index) => (
-            <Item key={item.id} num={index + 1} title={item.name} href={`team/${item.id}`} id={item.id}
-                  options={[item.status, item.order.toString()]}/>
+            <Item key={item.id} num={index + 1} title={item.name} href={`team/${item.id}`} id={item.id} isDisabled={!item.active}
+                  options={[item.status, item.order.toString(), item.active ? '✔' : '✖',]}/>
           ))}
           <Link href="/admin/team/new" className="btn-admin">Add new member</Link>
         </>

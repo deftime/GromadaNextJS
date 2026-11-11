@@ -21,6 +21,7 @@ type FormDataType = {
   status: string;
   description: string;
   order: number;
+  active: boolean;
 }
 
 export default function TeamMemberEdit() {
@@ -33,16 +34,10 @@ export default function TeamMemberEdit() {
       name: '',
       status: '',
       description: '',
-      order: 0
+      order: 0,
+      active: true
     }
   });
-
-  // + Делаем подстановку данных в форму через reset()
-  // + В сабмите формы смотрим на ID и разделяем функции по реальному айдишнику или NEW
-  // + Делаем Server Actions, юзаем внутри сабмита формы
-  // + Удаление делаем за пределами формы
-  // > Выводим сначала все данные на фронт БЕЗ фото, а потом дорабатываем его отдельно везде
-  // > Валидация полей?
 
   // Один раз получаем данные Итема или открываем пустую форму нового Итема
   useEffect(()=> {
@@ -51,11 +46,12 @@ export default function TeamMemberEdit() {
     if (id === 'new') {
       setItem({
         id: 'NEW',
-        order: 1,
+        order: 0,
         name: '',
         status: '',
         desc: '',
         photo: '',
+        active: true,
       });
       return;
     }
@@ -68,6 +64,7 @@ export default function TeamMemberEdit() {
           status: result.data.status,
           description: result.data.desc,
           order: result.data.order,
+          active: result.data.active
         });
       } else if (!ignore) {
         setMsg({text: 'Error get data. No data available!', status: 'error'});
@@ -86,7 +83,7 @@ export default function TeamMemberEdit() {
   const onSaveCreate = async (formData: FormDataType) => {
     if (id === 'new') {
 
-      const tm = new MemberObject(formData.name, formData.status, formData.description, '', formData.order);
+      const tm = new MemberObject(formData.name, formData.status, formData.description, '', formData.order, formData.active);
       try {
         const { error, success } = await createTeammate({...tm});
         if (success) {
@@ -109,6 +106,7 @@ export default function TeamMemberEdit() {
           desc: formData.description,
           photo: '',
           order: formData.order,
+          active: formData.active
         });
         if (success) {
           setMsg({text: success, status: 'success'});
@@ -158,29 +156,50 @@ export default function TeamMemberEdit() {
           </div>
         </div>
         <form action="#" onSubmit={handleSubmit(onSaveCreate)}>
-          <div className="edit-block">
-            <span>Name:</span>
-            <input type="text" {...register('name')}/>
-          </div>
-          <div className="edit-block">
-            <span>Status:</span>
-            <input type="text" {...register('status')}/>
-          </div>
-          <div className="edit-block">
-            <span>Description:</span>
-            <textarea {...register('description')} />
-          </div>
-          <div className="edit-block">
-            <span>Order:</span>
-            <input type="number" min={1} max={100} {...register('order')} />
-          </div>
-          <div className="edit-block btns">
-            <div className="btn-msg">
-              <button type="submit">{id === 'new' ? 'Create' : 'Save'}</button>
-              {msg && <Msg msg={msg.text} status={msg.status} />}
+          <div className="double-picture-layout">
+            <div className="pic-side">
+              <div className="pic-block">
+                <div className="view">
+                  <img src="/img/dummy.jpg" alt="image preview"/>
+                </div>
+                <div className="edit-block">
+                  <input type="file"/>
+                </div>
+              </div>
+              <div className="edit-block">
+                <span>Order:</span>
+                <input type="number" min={1} max={100} {...register('order')} />
+              </div>
+              <div className="edit-block checkbox">
+                <label>
+                  <input type="checkbox" {...register('active')}/>
+                  <span className="box"></span>
+                  <span className="label">Active</span>
+                </label>
+              </div>
             </div>
-            <button type="button" className="warn" onClick={handlerClose}>Close</button>
-            <button type="button" className="warn" onClick={handlerDelete}>Delete</button>
+            <div className="data-side">
+              <div className="edit-block">
+                <span>Name:</span>
+                <input type="text" {...register('name')}/>
+              </div>
+              <div className="edit-block">
+                <span>Status:</span>
+                <input type="text" {...register('status')}/>
+              </div>
+              <div className="edit-block">
+                <span>Description:</span>
+                <textarea {...register('description')} />
+              </div>
+              <div className="edit-block btns">
+                <div className="btn-msg">
+                  <button type="submit">{id === 'new' ? 'Create' : 'Save'}</button>
+                  {msg && <Msg msg={msg.text} status={msg.status} />}
+                </div>
+                <button type="button" className="warn" onClick={handlerClose}>Close</button>
+                <button type="button" className="warn" onClick={handlerDelete}>Delete</button>
+              </div>
+            </div>
           </div>
         </form>
       </div>

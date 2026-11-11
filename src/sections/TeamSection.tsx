@@ -156,9 +156,9 @@ export async function TeamSection() {
 
         <ShowMoreLayout maxHeight={700} maxHeightMobile={1940}>
           <div className="grid grid-cols-1 gap-8 md:gap-10 md:grid-cols-3 sm:grid-cols-2">
-            {readyData.map((person) => (
-              <Person key={person.name} name={person.name} role={person.status} bio={person.desc} photo={person.photo} />
-            ))}
+            {readyData.map((person) => {
+              if (person.active) return <Person key={person.name} name={person.name} role={person.status} bio={person.desc} photo={person.photo}/>
+            })}
           </div>
         </ShowMoreLayout>
 

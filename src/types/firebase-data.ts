@@ -16,4 +16,5 @@ export interface TeamMemberType {
   desc: string;
   photo: string;
   order: number;
+  active: boolean;
 }
