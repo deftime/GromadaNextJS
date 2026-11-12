@@ -39,6 +39,10 @@ export default function TeamMemberEdit() {
     }
   });
 
+  // РАЗДЕЛЕННАЯ система загрузки фото
+  // - Отдельная функция, которая по нажатию будет забирать файл, отправлять в Стор и ставить полученную ссылку в стейт
+  // - При сохранение или создании эту ссылку мы берем из стейта
+
   // Один раз получаем данные Итема или открываем пустую форму нового Итема
   useEffect(()=> {
     let ignore = false;
@@ -142,6 +146,16 @@ export default function TeamMemberEdit() {
     router.push('/admin/team');
   }
 
+  // Загрузить Картинку
+  const handlerAddImage = () => {
+
+  }
+
+  // Удалиить Картинку (не просто убираем, а удаляем из Стора)
+  const handlerDeleteImage = () => {
+
+  }
+
   return (
     item ? (
       <div className={clsx("admin-edit", {'loading': isSubmitting})}>
@@ -160,10 +174,14 @@ export default function TeamMemberEdit() {
             <div className="pic-side">
               <div className="pic-block">
                 <div className="view">
-                  <img src="/img/dummy.jpg" alt="image preview"/>
+                  {item.photo && <img src={item.photo} alt="image preview"/>}
                 </div>
                 <div className="edit-block">
                   <input type="file"/>
+                </div>
+                <div className="edit-block btns">
+                  <button type="button" className="sec" onClick={handlerAddImage}>Add Image</button>
+                  <button type="button" className="warn" onClick={handlerDeleteImage}>Delete Image</button>
                 </div>
               </div>
               <div className="edit-block">

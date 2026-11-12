@@ -6,7 +6,6 @@ import { TeamMemberType } from "@/types/firebase-data";
 import { Title } from "@/components/Title";
 import { Person } from "@/components/Person";
 import { ShowMoreLayout } from "@/components/ShowMoreLayout";
-import { SkeletonTeam } from "@/components/Skeletons";
 
 const TEAM = [
   {
