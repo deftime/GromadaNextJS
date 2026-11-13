@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from 'next/navigation';
 import { useRouter } from "next/navigation";
@@ -24,11 +24,20 @@ type FormDataType = {
   active: boolean;
 }
 
+type ErrorsMsgType = {
+  form?: boolean;
+  img?: boolean;
+  text: string;
+  status: 'error' | 'success';
+} | null
+
 export default function TeamMemberEdit() {
   const router = useRouter();
   const { id } = useParams<{id: string}>();
-  const [item, setItem] = useState<TeamMemberType | null>(null);
-  const [msg, setMsg] = useState<{text: string, status: 'error' | 'success'} | null>(null);
+  const imgRef = useRef<HTMLInputElement>(null);
+  const [ isImgPending, startTransition ] = useTransition();
+  const [item, setItem] = useState<TeamMemberType | null>(null); // Стейт главных данных текущего Итема
+  const [msg, setMsg] = useState<ErrorsMsgType>(null); // Универсальное сообщение про успех или ошибку
   const { register, handleSubmit, reset, formState: { isSubmitting } } = useForm<FormDataType>({
     defaultValues: {
       name: '',
@@ -71,7 +80,7 @@ export default function TeamMemberEdit() {
           active: result.data.active
         });
       } else if (!ignore) {
-        setMsg({text: 'Error get data. No data available!', status: 'error'});
+        setMsg({form: true, text: 'Error get data. No data available!', status: 'error'});
       }
     }).catch(error => {
       console.error(error);
@@ -91,13 +100,13 @@ export default function TeamMemberEdit() {
       try {
         const { error, success } = await createTeammate({...tm});
         if (success) {
-          setMsg({text: success, status: 'success'});
+          setMsg({form: true, text: success, status: 'success'});
           router.push(`/admin/team`);
         } else if (error) {
-          setMsg({text: error, status: 'error'});
+          setMsg({form: true, text: error, status: 'error'});
         }
       } catch {
-        setMsg({text: 'Error save data! Wrong data or connection failed.', status: 'error'});
+        setMsg({form: true, text: 'Error save data! Wrong data or connection failed.', status: 'error'});
       }
 
     } else {
@@ -113,12 +122,12 @@ export default function TeamMemberEdit() {
           active: formData.active
         });
         if (success) {
-          setMsg({text: success, status: 'success'});
+          setMsg({form: true, text: success, status: 'success'});
         } else if (error) {
-          setMsg({text: error, status: 'error'});
+          setMsg({form: true, text: error, status: 'error'});
         }
       } catch(error) {
-        setMsg({text: 'Error save data! Wrong data or connection failed.', status: 'error'});
+        setMsg({form: true, text: 'Error save data! Wrong data or connection failed.', status: 'error'});
         console.log(error);
       }
 
@@ -131,13 +140,13 @@ export default function TeamMemberEdit() {
     try {
       const result = await deleteTeammate(id);
       if (result && result.error) {
-        setMsg({text: result.error, status: 'error'});
+        setMsg({form: true, text: result.error, status: 'error'});
       } else {
-        setMsg({text: 'Member deleted!', status: 'success'});
+        setMsg({form: true, text: 'Member deleted!', status: 'success'});
         router.push('/admin/team');
       }
     } catch {
-      setMsg({text: 'Delete failed! General connection error.', status: 'error'});
+      setMsg({form: true, text: 'Delete failed! General connection error.', status: 'error'});
     }
   }
 
@@ -148,10 +157,29 @@ export default function TeamMemberEdit() {
 
   // Загрузить Картинку
   const handlerAddImage = () => {
+    const file = imgRef.current?.files?.[0];
+    if (!file) {
+      setMsg({img: true, text: 'No file selected!', status: 'error'});
+      return;
+    }
+    const ext = file.name.split('.').pop();
+    const maxSize = 1024 * 1024 * 2;
+    if (file.size > maxSize) {
+      setMsg({img: true, text: 'Image size is too big!', status: 'error'});
+      return;
+    }
+    if (ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png') {
+      setMsg({img: true, text: 'File type is not supported! Accept only JPG, JPEG, PNG.', status: 'error'});
+      return;
+    }
+
+    startTransition(async () => {
+      setMsg({img: true, text: 'Uploading...', status: 'success'});
+    })
 
   }
 
-  // Удалиить Картинку (не просто убираем, а удаляем из Стора)
+  // Удалить Картинку (не просто убираем, а удаляем из Стора)
   const handlerDeleteImage = () => {
 
   }
@@ -172,16 +200,17 @@ export default function TeamMemberEdit() {
         <form action="#" onSubmit={handleSubmit(onSaveCreate)}>
           <div className="double-picture-layout">
             <div className="pic-side">
-              <div className="pic-block">
+              <div className={clsx("pic-block", isImgPending && 'loading')}>
                 <div className="view">
                   {item.photo && <img src={item.photo} alt="image preview"/>}
                 </div>
                 <div className="edit-block">
-                  <input type="file"/>
+                  <input type="file" ref={imgRef}/>
                 </div>
+                {msg && msg.img && <Msg msg={msg.text} status={msg.status} />}
                 <div className="edit-block btns">
                   <button type="button" className="sec" onClick={handlerAddImage}>Add Image</button>
-                  <button type="button" className="warn" onClick={handlerDeleteImage}>Delete Image</button>
+                  <button type="button" className={clsx("warn", !item.photo && 'disabled')} onClick={handlerDeleteImage}>Delete Image</button>
                 </div>
               </div>
               <div className="edit-block">
@@ -212,7 +241,7 @@ export default function TeamMemberEdit() {
               <div className="edit-block btns">
                 <div className="btn-msg">
                   <button type="submit">{id === 'new' ? 'Create' : 'Save'}</button>
-                  {msg && <Msg msg={msg.text} status={msg.status} />}
+                  {msg && msg.form && <Msg msg={msg.text} status={msg.status} />}
                 </div>
                 <button type="button" className="warn" onClick={handlerClose}>Close</button>
                 <button type="button" className="warn" onClick={handlerDelete}>Delete</button>

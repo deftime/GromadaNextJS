@@ -72,6 +72,13 @@
         color: #a42222;
       }
     }
+    &.disabled {
+      background-color: grey;
+      border-color: grey;
+      color: #fff;
+      cursor: default;
+      pointer-events: none;
+    }
   }
   input[type="file"] {
     font-size: vw(12);
@@ -151,6 +158,16 @@
   }
   .edit-block {
     margin-top: vw(10);
+  }
+  &.loading {
+    opacity: 0.4;
+    button {
+      pointer-events: none;
+      cursor: default;
+      background-color: grey;
+      border-color: grey;
+      color: #fff;
+    }
   }
 }
 
