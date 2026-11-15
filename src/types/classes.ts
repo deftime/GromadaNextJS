@@ -37,16 +37,22 @@ export class MemberObject implements TeamMemberType{
   name: string;
   status: string;
   desc: string;
-  photo: string;
+  photo: {
+    url: string;
+    storage: string;
+  };
   order: number;
   active: boolean;
   readonly id: string = this.genId();
 
-  constructor(name: string, status: string, desc: string, photo: string, order: number, active: boolean) {
+  constructor(name: string, status: string, desc: string, photoUrl: string, photoRef: string, order: number, active: boolean) {
     this.name = name;
     this.status = status;
     this.desc = desc;
-    this.photo = photo;
+    this.photo = {
+      url: photoUrl,
+      storage: photoRef,
+    };
     this.order = order;
     this.active = active;
   }

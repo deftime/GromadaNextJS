@@ -6,6 +6,10 @@ import { useParams } from 'next/navigation';
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
+import { ref, uploadBytes, deleteObject, getDownloadURL } from "firebase/storage";
+import { storage } from "@/api/firebase-client";
+import { FirebaseError } from "firebase/app";
+
 import { TeamMemberType } from "@/types/firebase-data";
 import { MemberObject } from "@/types/classes";
 import { createTeammate, deleteTeammate, getTeammate, updateTeammate } from "@/actions/team";
@@ -35,7 +39,7 @@ export default function TeamMemberEdit() {
   const router = useRouter();
   const { id } = useParams<{id: string}>();
   const imgRef = useRef<HTMLInputElement>(null);
-  const [ isImgPending, startTransition ] = useTransition();
+  const [ isImgPending, startTransition ] = useTransition(); // Ожидание процеса для Картинок
   const [item, setItem] = useState<TeamMemberType | null>(null); // Стейт главных данных текущего Итема
   const [msg, setMsg] = useState<ErrorsMsgType>(null); // Универсальное сообщение про успех или ошибку
   const { register, handleSubmit, reset, formState: { isSubmitting } } = useForm<FormDataType>({
@@ -49,8 +53,13 @@ export default function TeamMemberEdit() {
   });
 
   // РАЗДЕЛЕННАЯ система загрузки фото
-  // - Отдельная функция, которая по нажатию будет забирать файл, отправлять в Стор и ставить полученную ссылку в стейт
-  // - При сохранение или создании эту ссылку мы берем из стейта
+  // Отдельная функция, которая по нажатию будет забирать файл, отправлять в Стор и ставить полученную ссылку и реф в стейт
+  // При сохранение или создании данные берем из стейта
+  // При удалении реф мы берем из стейта
+
+  // Есть не-критическая проблема.
+  // Если добавить или удалить фото и НЕ сохарнить Итем - в базе будут неверные данные (битые ссылки или пустые строки)
+  // Но это решается просто повторным добавлением фото, так как запись всегда ПЕРЕЗАПИСЫВАЕТ тот же путь
 
   // Один раз получаем данные Итема или открываем пустую форму нового Итема
   useEffect(()=> {
@@ -63,7 +72,10 @@ export default function TeamMemberEdit() {
         name: '',
         status: '',
         desc: '',
-        photo: '',
+        photo: {
+          url: '',
+          storage: ''
+        },
         active: true,
       });
       return;
@@ -94,9 +106,10 @@ export default function TeamMemberEdit() {
 
   // Создание или Обновление Итема через хендлер формы
   const onSaveCreate = async (formData: FormDataType) => {
+    if (!item) return;
     if (id === 'new') {
 
-      const tm = new MemberObject(formData.name, formData.status, formData.description, '', formData.order, formData.active);
+      const tm = new MemberObject(formData.name, formData.status, formData.description, item.photo.url, item.photo.storage, formData.order, formData.active);
       try {
         const { error, success } = await createTeammate({...tm});
         if (success) {
@@ -117,7 +130,10 @@ export default function TeamMemberEdit() {
           name: formData.name,
           status: formData.status,
           desc: formData.description,
-          photo: '',
+          photo: {
+            url: item.photo.url,
+            storage: item.photo.storage,
+          },
           order: formData.order,
           active: formData.active
         });
@@ -157,6 +173,7 @@ export default function TeamMemberEdit() {
 
   // Загрузить Картинку
   const handlerAddImage = () => {
+    if (!item) return;
     const file = imgRef.current?.files?.[0];
     if (!file) {
       setMsg({img: true, text: 'No file selected!', status: 'error'});
@@ -175,12 +192,37 @@ export default function TeamMemberEdit() {
 
     startTransition(async () => {
       setMsg({img: true, text: 'Uploading...', status: 'success'});
+      try {
+        const picRef = ref(storage, `images/teammate-${id}.${ext}`);
+        await uploadBytes(picRef, file);
+        const link = await getDownloadURL(picRef);
+        setItem({...item, photo: {url: link, storage: `images/teammate-${id}.${ext}`}})
+        setMsg(null);
+      } catch(error) {
+        if (error instanceof FirebaseError) {
+          setMsg({img: true, text: `Image upload error! Code: ${error.code}`, status: 'error'});
+        }
+      }
     })
 
   }
 
   // Удалить Картинку (не просто убираем, а удаляем из Стора)
   const handlerDeleteImage = () => {
+    if (!item) return;
+    console.log(item.photo.storage);
+
+    startTransition(async () => {
+      try {
+        const picRef = ref(storage, item.photo.storage);
+        await deleteObject(picRef);
+        setItem({...item, photo: {url: '', storage: ''}});
+      } catch(error) {
+        if (error instanceof FirebaseError) {
+          setMsg({img: true, text: `Image delete error! Code: ${error.code}`, status: 'error'});
+        }
+      }
+    })
 
   }
 
@@ -202,7 +244,7 @@ export default function TeamMemberEdit() {
             <div className="pic-side">
               <div className={clsx("pic-block", isImgPending && 'loading')}>
                 <div className="view">
-                  {item.photo && <img src={item.photo} alt="image preview"/>}
+                  {item.photo.url && <img src={item.photo.url} alt="image preview"/>}
                 </div>
                 <div className="edit-block">
                   <input type="file" ref={imgRef}/>
@@ -210,7 +252,7 @@ export default function TeamMemberEdit() {
                 {msg && msg.img && <Msg msg={msg.text} status={msg.status} />}
                 <div className="edit-block btns">
                   <button type="button" className="sec" onClick={handlerAddImage}>Add Image</button>
-                  <button type="button" className={clsx("warn", !item.photo && 'disabled')} onClick={handlerDeleteImage}>Delete Image</button>
+                  <button type="button" className={clsx("warn", !item.photo.storage && 'disabled')} onClick={handlerDeleteImage}>Delete Image</button>
                 </div>
               </div>
               <div className="edit-block">
@@ -244,7 +286,7 @@ export default function TeamMemberEdit() {
                   {msg && msg.form && <Msg msg={msg.text} status={msg.status} />}
                 </div>
                 <button type="button" className="warn" onClick={handlerClose}>Close</button>
-                <button type="button" className="warn" onClick={handlerDelete}>Delete</button>
+                {id !== 'new' && <button type="button" className="warn" onClick={handlerDelete}>Delete</button>}
               </div>
             </div>
           </div>
