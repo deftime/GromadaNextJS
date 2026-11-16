@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from "next/cache";
 import { verifySession } from "@/api/adminAuthVerify";
 import { dbServer } from "@/api/firebase-server";
 import { TeamMemberType } from "@/types/firebase-data";
@@ -29,6 +30,7 @@ export async function updateTeammate(data: TeamMemberType) {
 
   await dbRef.update(data);
 
+  revalidatePath('/');
   return { success: 'Teammate updated successfully!' };
 }
 
@@ -43,6 +45,7 @@ export async function createTeammate(data: TeamMemberType) {
 
   await dbRef.set(data);
 
+  revalidatePath('/');
   return { success: 'Teammate created successfully!' };
 }
 
@@ -55,5 +58,6 @@ export async function deleteTeammate(id: string) {
     return { error: 'DB path failed! Teammate not found.' };
   }
 
+  revalidatePath('/');
   await dbRef.remove();
 }

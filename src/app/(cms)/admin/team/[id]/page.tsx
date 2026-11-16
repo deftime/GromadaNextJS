@@ -182,7 +182,7 @@ export default function TeamMemberEdit() {
     const ext = file.name.split('.').pop();
     const maxSize = 1024 * 1024 * 2;
     if (file.size > maxSize) {
-      setMsg({img: true, text: 'Image size is too big!', status: 'error'});
+      setMsg({img: true, text: 'Image size is too big! Max 2MB', status: 'error'});
       return;
     }
     if (ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png') {
@@ -210,7 +210,6 @@ export default function TeamMemberEdit() {
   // Удалить Картинку (не просто убираем, а удаляем из Стора)
   const handlerDeleteImage = () => {
     if (!item) return;
-    console.log(item.photo.storage);
 
     startTransition(async () => {
       try {
