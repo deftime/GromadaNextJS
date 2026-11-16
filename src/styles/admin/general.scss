@@ -58,11 +58,11 @@
 
 .admin-base {
   display: flex;
+  min-height: 100vh;
   .sidebar {
     flex-shrink: 0;
     width: vw(180);
     border-right: 2px solid $brandBlack;
-    height: 100vh;
     padding: vw(15) 0;
   }
   .page-zone {

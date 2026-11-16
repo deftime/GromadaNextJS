@@ -153,17 +153,25 @@ export default function TeamMemberEdit() {
   // Удаляем Итем
   const handlerDelete = async () => {
     if (!confirm('Are you sure, that you want to DELETE this member?')) return;
-    try {
-      const result = await deleteTeammate(id);
-      if (result && result.error) {
-        setMsg({form: true, text: result.error, status: 'error'});
-      } else {
-        setMsg({form: true, text: 'Member deleted!', status: 'success'});
-        router.push('/admin/team');
+
+    startTransition(async () => {
+      try {
+        if (item?.photo.storage) {
+          const picRef = ref(storage, item.photo.storage);
+          await deleteObject(picRef);
+        }
+        const result = await deleteTeammate(id);
+        if (result && result.error) {
+          setMsg({form: true, text: result.error, status: 'error'});
+        } else {
+          setMsg({form: true, text: 'Member deleted!', status: 'success'});
+          router.push('/admin/team');
+        }
+      } catch {
+        setMsg({form: true, text: 'Delete failed! General connection error.', status: 'error'});
       }
-    } catch {
-      setMsg({form: true, text: 'Delete failed! General connection error.', status: 'error'});
-    }
+    })
+
   }
 
   // Закрываем Итем
@@ -179,8 +187,10 @@ export default function TeamMemberEdit() {
       setMsg({img: true, text: 'No file selected!', status: 'error'});
       return;
     }
+
     const ext = file.name.split('.').pop();
     const maxSize = 1024 * 1024 * 2;
+    const refString = item.photo.storage || Date.now().toString(36); // Отдельный независимый ID для картинки
     if (file.size > maxSize) {
       setMsg({img: true, text: 'Image size is too big! Max 2MB', status: 'error'});
       return;
@@ -192,11 +202,13 @@ export default function TeamMemberEdit() {
 
     startTransition(async () => {
       setMsg({img: true, text: 'Uploading...', status: 'success'});
+
       try {
-        const picRef = ref(storage, `images/teammate-${id}.${ext}`);
+        const picRef = ref(storage, `images/teammate-${refString}.${ext}`);
         await uploadBytes(picRef, file);
         const link = await getDownloadURL(picRef);
-        setItem({...item, photo: {url: link, storage: `images/teammate-${id}.${ext}`}})
+        setItem({...item, photo: {url: link, storage: `images/teammate-${refString}.${ext}`}})
+        if (imgRef.current) imgRef.current.value = '';
         setMsg(null);
       } catch(error) {
         if (error instanceof FirebaseError) {
