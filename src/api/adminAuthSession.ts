@@ -3,6 +3,9 @@
 import { cookies } from 'next/headers';
 import { authServer } from '@/api/firebase-server';
 
+// Тут функции создания и удаления сессии, которая авторизует админку.
+// Используем при логине и логауте.
+
 export async function createSession(idToken: string) {
   const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 днів
   const sessionCookie = await authServer.createSessionCookie(idToken, { expiresIn });

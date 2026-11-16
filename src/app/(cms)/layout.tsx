@@ -9,6 +9,7 @@ import { LoginStatus } from "@/components/admin/LoginStatus";
 import homeLogo from '@/assets/home.svg';
 import formLogo from '@/assets/form.svg';
 import panelLogo from '@/assets/dashboard.svg';
+import teamLogo from '@/assets/team.svg';
 import '@/styles/admin/general.scss';
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function Layout({ children }: { children: ReactNode}) {
         <div className="admin-base">
           <div className="sidebar">
             <NavElem title="Panel" href="/admin" icon={panelLogo.src} />
+            <NavElem title="Team" href="/admin/team" icon={teamLogo.src} />
             <NavElem title="Feedback Form" href="/admin/feedback-form" icon={formLogo.src} />
           </div>
           <div className="page-zone">

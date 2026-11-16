@@ -36,3 +36,13 @@ export function SkeletonLogin() {
     </div>
   )
 }
+
+export function SkeletonTeam() {
+  return (
+    <div className="skeleton skeleton-team">
+      <div className="photo"></div>
+      <div className="name"></div>
+      <div className="desc"></div>
+    </div>
+  )
+}

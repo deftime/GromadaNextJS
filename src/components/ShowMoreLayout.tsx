@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useLayoutEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
 import { Button } from "@/components/Button";
@@ -21,7 +21,7 @@ export function ShowMoreLayout({ children, maxHeight, maxHeightMobile = undefine
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(()=> {
+  useLayoutEffect(()=> {
     if (!ref.current) return;
     setIsMobile(window.innerWidth <= 500);
     let needHeight: number | undefined;

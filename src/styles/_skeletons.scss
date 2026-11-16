@@ -1,0 +1,73 @@
+@use 'variables' as *;
+@use 'templates' as *;
+
+.skeleton {
+  background-color: #e5e5e5;
+  padding: 120px 65px;
+  animation: skeleton 1s infinite ease;
+}
+
+.skeleton-team {
+  display: flex;
+  gap: 40px;
+  padding: 120px 300px;
+  .item {
+    flex: 1;
+  }
+  .photo {
+    height: 285px;
+    background-color: grey;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+  .name {
+    height: 40px;
+    background-color: #d1d1d1;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+  .desc {
+    height: 300px;
+    background-color: #d1d1d1;
+    border-radius: 12px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+
+  .skeleton {
+    padding: 100px 60px;
+  }
+
+  .skeleton-team {
+    padding: 100px 60px;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .skeleton {
+    padding: 50px 20px;
+  }
+
+  .skeleton-team {
+    display: block;
+    padding: 50px 20px;
+    .item:nth-child(n+2) {
+      margin-top: 30px;
+    }
+    .photo {
+      height: 200px;
+      margin-bottom: 15px;
+    }
+    .name {
+      height: 30px;
+      margin-bottom: 15px;
+    }
+    .desc {
+      height: 250px;
+    }
+  }
+
+}
